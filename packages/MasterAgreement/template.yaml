@@ -1,0 +1,37 @@
+specVersion: 0.0.4
+description: DEUS V3
+repository: https://github.com/dsynths/dsynths-subgraphs/tree/main/subgraphs/deus-v3
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MasterAgreement
+    network: '{{ network }}'
+    source:
+      address: '{{ masterAgreementAddress }}'
+      abi: MasterAgreement
+      startBlock: {{masterAgreementStartBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mapping.ts
+      entities:
+        - Hedger
+        - Market
+        - RequestForQuote
+        - Position
+        - Fill
+        - User
+      abis:
+        - name: MasterAgreement
+          file: ./abis/MasterAgreement.json
+      eventHandlers:
+        - event: CreateMarket(indexed uint256)
+          handler: handleCreateMarket
+        - event: Enlist(indexed address)
+          handler: handleEnlist
+        - event: RequestOpenMarketSingle(indexed address,indexed uint256)
+          handler: handleRequestOpenMarketSingle
+        - event: FillOpenMarketSingle(indexed address,indexed uint256,indexed uint256)
+          handler: handleFillOpenMarketSingle

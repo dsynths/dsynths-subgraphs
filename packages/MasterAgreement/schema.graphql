@@ -1,0 +1,135 @@
+enum MarketType {
+  FOREX
+  CRYPTO
+  STOCK
+}
+
+enum TradingSession {
+  _24_7
+  _24_5
+}
+
+enum Side {
+  BUY
+  SELL
+}
+
+enum HedgerMode {
+  SINGLE
+  HYBRID
+  AUTO
+}
+
+enum OrderType {
+  LIMIT
+  MARKET
+}
+
+enum PositionType {
+  ISOLATED
+  CROSS
+}
+
+enum RequestForQuoteState {
+  ORPHAN
+  CANCELATION_REQUESTED
+  CANCELED
+  REJECTED
+  ACCEPTED
+}
+
+enum PositionState {
+  OPEN
+  MARKET_CLOSE_REQUESTED
+  MARKET_CLOSE_CANCELATION_REQUESTED
+  LIMIT_CLOSE_REQUESTED
+  LIMIT_CLOSE_CANCELATION_REQUESTED
+  LIMIT_CLOSE_ACTIVE
+  CLOSED
+  LIQUIDATED
+}
+
+type Hedger @entity {
+  id: ID!
+  address: Bytes!
+  pricingURLs: [String!]!
+  marketsURLs: [String!]!
+  user: User!
+}
+
+type Market @entity {
+  id: ID!
+  marketId: BigInt!
+  identifier: String!
+  marketType: MarketType!
+  tradingSession: TradingSession!
+  active: Boolean!
+  baseCurrency: String!
+  quoteCurrency: String!
+  symbol: String!
+}
+
+type RequestForQuote @entity {
+  id: ID!
+  rfqId: BigInt!
+  state: RequestForQuoteState!
+  positionType: PositionType!
+  orderType: OrderType!
+  partyA: Bytes!
+  partyB: Hedger!
+  hedgerMode: HedgerMode!
+  market: Market!
+  side: Side!
+  notionalUsd: BigDecimal!
+  leverageUsed: Int!
+  lockedMargin: BigDecimal!
+  protocolFee: BigDecimal!
+  liquidationFee: BigDecimal!
+  cva: BigDecimal!
+  minExpectedUnits: BigDecimal!
+  maxExpectedUnits: BigDecimal!
+  creationTimestamp: BigInt!
+  mutableTimestamp: BigInt!
+}
+
+type Fill @entity {
+  id: ID!
+  fillId: BigInt!
+  marketId: BigInt!
+  position: Position!
+  user: User!
+  side: Side!
+  amount: BigDecimal!
+  price: BigDecimal!
+  transactionHash: String!
+  timestamp: BigInt!
+}
+
+type Position @entity {
+  id: ID!
+  positionId: BigInt!
+  state: PositionState!
+  positionType: PositionType!
+  market: Market!
+  partyA: Bytes!
+  partyB: Hedger!
+  leverageUsed: Int!
+  side: Side!
+  lockedMargin: BigDecimal!
+  protocolFeePaid: BigDecimal!
+  liquidationFee: BigDecimal!
+  cva: BigDecimal!
+  currentBalanceUnits: BigDecimal!
+  initialNotionalUsd: BigDecimal!
+  creationTimestamp: BigInt!
+  mutableTimestamp: BigInt!
+  fills: [Fill!]! @derivedFrom(field: "position")
+}
+
+type User @entity {
+  id: ID!
+  openRequestForQuotes: [RequestForQuote!]!
+  openPositionsIsolated: [Position!]!
+  openPositionsCross: [Position!]!
+  fills: [Fill!]! @derivedFrom(field: "user")
+}

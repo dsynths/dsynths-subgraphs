@@ -1,0 +1,6 @@
+{
+  "network": "fantom",
+  "chainId": "250",
+  "masterAgreementAddress": "0x92434B00d67b918A5094AC016786B936D5a8246f",
+  "masterAgreementStartBlock": "49176330"
+}
