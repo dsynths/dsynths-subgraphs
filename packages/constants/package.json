@@ -9,6 +9,6 @@
   "scripts": {
     "codegen": " ",
     "build": " ",
-    "prepare:fantom": "mustache ../../config/fantom.json index.template.ts > index.ts"
+    "prepare:arbitrum": "mustache ../../config/arbitrum.json index.template.ts > index.ts"
   }
 }

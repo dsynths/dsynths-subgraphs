@@ -10,7 +10,7 @@ import {MASTER_AGREEMENT_ADDRESS} from '../../constants'
 export function createMarket(marketId: BigInt): void {
   const fetchedMarket = fetchMarket(marketId)
   let market = new Market(marketId.toString())
-  market.marketId = fetchedMarket._marketId
+  market.marketId = fetchedMarket.marketId
   market.identifier = fetchedMarket.identifier
   market.marketType = getMarketType(fetchedMarket.marketType)
   market.tradingSession = getTradingSession(fetchedMarket.tradingSession)

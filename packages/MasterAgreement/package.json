@@ -7,10 +7,10 @@
   "scripts": {
     "codegen": "graph codegen --output-dir ./generated/",
     "build": "graph build",
-    "create-local": "graph create --node http://localhost:8020/ /dsynths/deus-v3",
-    "remove-local": "graph remove --node http://localhost:8020/ /dsynths/deus-v3",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 /dsynths/deus-v3",
-    "deploy:fantom": "graph deploy dsynths/deus-v3 --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
-    "prepare:fantom": "mustache ./config/fantom.json template.yaml > subgraph.yaml && mustache ./config/fantom.json ./constants/template.ts > ./constants/index.ts"
+    "create-local": "graph create --node http://localhost:8020/ /dsynths/deus-v3-arbitrum",
+    "remove-local": "graph remove --node http://localhost:8020/ /dsynths/deus-v3-arbitrum",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 /dsynths/deus-v3-arbitrum",
+    "deploy:arbitrum": "graph deploy dsynths/deus-v3-arbitrum --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
+    "prepare:arbitrum": "mustache ./config/arbitrum.json template.yaml > subgraph.yaml && mustache ./config/arbitrum.json ./constants/template.ts > ./constants/index.ts"
   }
 }

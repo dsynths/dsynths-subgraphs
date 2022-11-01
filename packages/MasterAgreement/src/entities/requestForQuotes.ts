@@ -51,8 +51,15 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): void {
   // Add RFQ to user lists
   let userA = getUser(partyA)
   let userB = getUser(fetchedRequestForQuote.partyB)
-  userA.openRequestForQuotes.push(rfq.id)
-  userB.openRequestForQuotes.push(rfq.id)
+  // Copy the list so we can append to it
+  const rfqListA = userA.openRequestForQuotes
+  const rfqListB = userB.openRequestForQuotes
+  rfqListA.push(rfq.id)
+  rfqListB.push(rfq.id)
+  // Reassign the list
+  userA.openRequestForQuotes = rfqListA
+  userB.openRequestForQuotes = rfqListB
+
   userA.save()
   userB.save()
 }

@@ -1,11 +1,11 @@
-import {BigInt, ethereum} from '@graphprotocol/graph-ts'
+import {BigInt, ethereum, log} from '@graphprotocol/graph-ts'
 import {SCALE} from 'const'
 
 import {
   MasterAgreement,
   MasterAgreement__getPositionResultPositionStruct
 } from '../../generated/MasterAgreement/MasterAgreement'
-import {Position} from '../../generated/schema'
+import {Position, RequestForQuote} from '../../generated/schema'
 import {getUser} from './user'
 
 import {MASTER_AGREEMENT_ADDRESS} from '../../constants'
@@ -33,7 +33,7 @@ export function onOpenPosition(rfqId: BigInt, positionId: BigInt, event: ethereu
   position.mutableTimestamp = fetchedPosition.mutableTimestamp
 
   // Setup relationships
-  position.market = fetchedPosition.marketId.toHexString()
+  position.market = fetchedPosition.marketId.toString()
   position.partyB = fetchedPosition.partyB.toHexString()
 
   // Save the Position
@@ -42,21 +42,38 @@ export function onOpenPosition(rfqId: BigInt, positionId: BigInt, event: ethereu
   // Create the fill
   createFill(positionId, fetchedPosition.marketId, position.partyA, event)
 
+  // Update the RFQ status
+  let rfq = RequestForQuote.load(rfqId.toString())
+  if (rfq) {
+    rfq.state = 'ACCEPTED'
+    rfq.save()
+  }
+
   // Remove open RFQ's
   let userA = getUser(fetchedPosition.partyA)
   let userB = getUser(fetchedPosition.partyB)
+  // Remove the RFQ and assign it
+  const rfqListA = removeFromArray(userA.openRequestForQuotes, rfqId.toString())
+  const rfqListB = removeFromArray(userB.openRequestForQuotes, rfqId.toString())
+  // Reassign the lists
+  userA.openRequestForQuotes = rfqListA
+  userB.openRequestForQuotes = rfqListB
 
-  userA.openRequestForQuotes = removeFromArray(userA.openRequestForQuotes, rfqId.toString())
-  userB.openRequestForQuotes = removeFromArray(userB.openRequestForQuotes, rfqId.toString())
-
-  // Add open positions
+  // Add open positions to users
+  const openPositionsIsolatedA = userA.openPositionsIsolated
+  const openPositionsIsolatedB = userB.openPositionsIsolated
+  const openPositionsCrossA = userA.openPositionsCross
   if (position.positionType == 'ISOLATED') {
-    userA.openPositionsIsolated.push(position.id)
-    userB.openPositionsIsolated.push(position.id)
+    openPositionsIsolatedA.push(position.id)
+    openPositionsIsolatedB.push(position.id)
   } else {
-    userA.openPositionsCross.push(position.id)
-    userB.openPositionsCross.push(position.id)
+    openPositionsCrossA.push(position.id)
+    openPositionsIsolatedB.push(position.id)
   }
+  // Reassign the lists
+  userA.openPositionsIsolated = openPositionsIsolatedA
+  userB.openPositionsIsolated = openPositionsIsolatedB
+  userA.openPositionsCross = openPositionsCrossA
 
   userA.save()
   userB.save()
