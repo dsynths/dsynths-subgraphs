@@ -49,6 +49,32 @@ enum PositionState {
   LIQUIDATED
 }
 
+type MasterAgreement @entity {
+  id: ID!
+  activeRequestForQuotes: [RequestForQuote!]!
+  activePositionsIsolated: [Position!]!
+  activePositionsCross: [Position!]!
+  cumulativeRequestForQuotes: BigInt!
+  cumulativePositionsIsolated: BigInt!
+  cumulativePositionsCross: BigInt!
+}
+
+type HourlySnapshot @entity {
+  id: ID!
+  timestamp: BigInt!
+  cumulativeRequestForQuotes: BigInt!
+  cumulativePositionsIsolated: BigInt!
+  cumulativePositionsCross: BigInt!
+}
+
+type DailySnapshot @entity {
+  id: ID!
+  timestamp: BigInt!
+  cumulativeRequestForQuotes: BigInt!
+  cumulativePositionsIsolated: BigInt!
+  cumulativePositionsCross: BigInt!
+}
+
 type Hedger @entity {
   id: ID!
   address: Bytes!
@@ -76,7 +102,7 @@ type RequestForQuote @entity {
   positionType: PositionType!
   orderType: OrderType!
   partyA: Bytes!
-  partyB: Hedger!
+  partyB: Bytes!
   hedgerMode: HedgerMode!
   market: Market!
   side: Side!
@@ -112,7 +138,7 @@ type Position @entity {
   positionType: PositionType!
   market: Market!
   partyA: Bytes!
-  partyB: Hedger!
+  partyB: Bytes!
   leverageUsed: Int!
   side: Side!
   lockedMargin: BigDecimal!

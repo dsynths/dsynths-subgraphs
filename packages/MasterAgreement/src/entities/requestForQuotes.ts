@@ -6,7 +6,6 @@ import {
   MasterAgreement__getRequestForQuoteResultRfqStruct
 } from '../../generated/MasterAgreement/MasterAgreement'
 import {RequestForQuote} from '../../generated/schema'
-import {getUser} from './user'
 
 import {MASTER_AGREEMENT_ADDRESS} from '../../constants'
 import {
@@ -17,8 +16,13 @@ import {
   getRequestForQuoteState,
   getSide
 } from '../helpers'
+import {addUserOpenRequestForQuote} from './user'
 
-export function onRequestForQuote(partyA: Address, rfqId: BigInt): void {
+export function getRequestForQuote(rfqId: BigInt): RequestForQuote | null {
+  return RequestForQuote.load(rfqId.toString())
+}
+
+export function onRequestForQuote(partyA: Address, rfqId: BigInt): RequestForQuote {
   const fetchedRequestForQuote = fetchRequestForQuote(rfqId)
 
   // Create the RFQ
@@ -28,6 +32,7 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): void {
   rfq.positionType = getPositionType(fetchedRequestForQuote.positionType)
   rfq.orderType = getOrderType(fetchedRequestForQuote.orderType)
   rfq.partyA = partyA
+  rfq.partyB = fetchedRequestForQuote.partyB
   rfq.hedgerMode = getHedgerMode(fetchedRequestForQuote.hedgerMode)
   rfq.side = getSide(fetchedRequestForQuote.side)
   rfq.notionalUsd = convertAmountToDecimal(fetchedRequestForQuote.notionalUsd, SCALE)
@@ -43,25 +48,14 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): void {
 
   // Setup relationships
   rfq.market = fetchedRequestForQuote.marketId.toString()
-  rfq.partyB = fetchedRequestForQuote.partyB.toHexString()
 
   // Save the RFQ
   rfq.save()
 
-  // Add RFQ to user lists
-  let userA = getUser(partyA)
-  let userB = getUser(fetchedRequestForQuote.partyB)
-  // Copy the list so we can append to it
-  const rfqListA = userA.openRequestForQuotes
-  const rfqListB = userB.openRequestForQuotes
-  rfqListA.push(rfq.id)
-  rfqListB.push(rfq.id)
-  // Reassign the list
-  userA.openRequestForQuotes = rfqListA
-  userB.openRequestForQuotes = rfqListB
+  // Update User state
+  addUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
 
-  userA.save()
-  userB.save()
+  return rfq
 }
 
 function fetchRequestForQuote(rfqId: BigInt): MasterAgreement__getRequestForQuoteResultRfqStruct {

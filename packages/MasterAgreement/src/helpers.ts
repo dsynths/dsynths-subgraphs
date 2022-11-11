@@ -16,6 +16,16 @@ export function convertAmountToDecimal(amount: BigInt, decimals: BigInt): BigDec
   return amount.toBigDecimal().div(exponentToBigDecimal(decimals))
 }
 
+export function removeFromArray(arr: string[], item: string): string[] {
+  let result: string[] = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] != item) {
+      result.push(arr[i])
+    }
+  }
+  return result
+}
+
 export function getRequestForQuoteState(state: number): string {
   if (state == 0) {
     return 'ORPHAN'
@@ -81,5 +91,23 @@ export function getHedgerMode(hedgerMode: number): string {
     return 'HYBRID'
   } else {
     return 'AUTO'
+  }
+}
+
+export function getMarketType(marketType: number): string {
+  if (marketType == 0) {
+    return 'FOREX'
+  } else if (marketType == 1) {
+    return 'CRYPTO'
+  } else {
+    return 'STOCK'
+  }
+}
+
+export function getTradingSession(tradingSession: number): string {
+  if (tradingSession == 0) {
+    return '_24_7'
+  } else {
+    return '_24_5'
   }
 }
