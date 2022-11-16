@@ -33,5 +33,13 @@ dataSources:
           handler: handleEnlist
         - event: RequestOpenMarketSingle(indexed address,indexed uint256)
           handler: handleRequestOpenMarketSingle
+        - event: CancelOpenMarketSingle(indexed address,indexed uint256)
+          handler: handleCancelOpenMarketSingle
+        - event: ForceCancelOpenMarketSingle(indexed address,indexed uint256)
+          handler: handleForceCancelOpenMarketSingle
+        - event: AcceptCancelOpenMarketSingle(indexed address,indexed uint256)
+          handler: handleAcceptCancelOpenMarketSingle
+        - event: RejectOpenMarketSingle(indexed address,indexed uint256)
+          handler: handleRejectOpenMarketSingle
         - event: FillOpenMarketSingle(indexed address,indexed uint256,indexed uint256)
           handler: handleFillOpenMarketSingle

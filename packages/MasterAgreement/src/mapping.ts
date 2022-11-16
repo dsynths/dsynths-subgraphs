@@ -1,12 +1,17 @@
 import {
+  AcceptCancelOpenMarketSingle,
+  CancelOpenMarketSingle,
   CreateMarket,
   Enlist,
   FillOpenMarketSingle,
+  ForceCancelOpenMarketSingle,
+  RejectOpenMarketSingle,
   RequestOpenMarketSingle
 } from '../generated/MasterAgreement/MasterAgreement'
-import {createMarket, enlist, onRequestForQuote, onOpenPosition} from './entities'
+import {createMarket, enlist, onRequestForQuote, onOpenPosition, updateRequestForQuoteState} from './entities'
 import {addActivePosition, addActiveRequestForQuote} from './entities/masteragreement'
 import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshot'
+import {removeUserOpenRequestForQuote} from './entities/user'
 
 export function handleCreateMarket(event: CreateMarket): void {
   createMarket(event.params.marketId)
@@ -26,6 +31,28 @@ export function handleRequestOpenMarketSingle(event: RequestOpenMarketSingle): v
   // Update hourly & daily snapshots
   updateHourlySnapshot(ma, event)
   updateDailySnapshot(ma, event)
+}
+
+export function handleCancelOpenMarketSingle(event: CancelOpenMarketSingle): void {
+  updateRequestForQuoteState(event.params.rfqId)
+}
+
+export function handleForceCancelOpenMarketSingle(event: ForceCancelOpenMarketSingle): void {
+  const rfq = updateRequestForQuoteState(event.params.rfqId)
+  if (!rfq) return
+  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+}
+
+export function handleAcceptCancelOpenMarketSingle(event: AcceptCancelOpenMarketSingle): void {
+  const rfq = updateRequestForQuoteState(event.params.rfqId)
+  if (!rfq) return
+  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+}
+
+export function handleRejectOpenMarketSingle(event: RejectOpenMarketSingle): void {
+  const rfq = updateRequestForQuoteState(event.params.rfqId)
+  if (!rfq) return
+  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
 }
 
 export function handleFillOpenMarketSingle(event: FillOpenMarketSingle): void {

@@ -58,6 +58,17 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): RequestForQuo
   return rfq
 }
 
+export function updateRequestForQuoteState(rfqId: BigInt): RequestForQuote | null {
+  const rfq = getRequestForQuote(rfqId)
+  if (!rfq) return null
+
+  const fetchedRequestForQuote = fetchRequestForQuote(rfqId)
+  rfq.state = getRequestForQuoteState(fetchedRequestForQuote.state)
+  rfq.save()
+
+  return rfq
+}
+
 function fetchRequestForQuote(rfqId: BigInt): MasterAgreement__getRequestForQuoteResultRfqStruct {
   const contract = MasterAgreement.bind(MASTER_AGREEMENT_ADDRESS)
   return contract.getRequestForQuote(rfqId)
