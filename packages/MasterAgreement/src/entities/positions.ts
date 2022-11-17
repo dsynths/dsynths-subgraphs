@@ -6,6 +6,7 @@ import {addUserPosition, removeUserOpenRequestForQuote} from './party'
 import {calculateLeverageUsed, convertAmountToDecimal, getPositionState, getPositionType, getSide} from '../helpers'
 import {getRequestForQuote} from './requestForQuotes'
 import {fetchPosition} from '../fetchers'
+import {getMarket} from './markets'
 
 export function onOpenPosition(rfqId: BigInt, positionId: BigInt): Position {
   const fetchedPosition = fetchPosition(positionId)
@@ -35,7 +36,7 @@ export function onOpenPosition(rfqId: BigInt, positionId: BigInt): Position {
   )
 
   // Setup relationships
-  position.market = fetchedPosition.marketId.toString()
+  position.market = getMarket(fetchedPosition.marketId).id
 
   // Save the Position
   position.save()

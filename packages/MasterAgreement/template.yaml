@@ -1,4 +1,4 @@
-specVersion: 0.0.4
+specVersion: 0.0.5
 description: DEUS V3
 repository: https://github.com/dsynths/dsynths-subgraphs/tree/main/subgraphs/deus-v3
 schema:
@@ -13,7 +13,7 @@ dataSources:
       startBlock: {{masterAgreementStartBlock}}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       file: ./src/mapping.ts
       entities:
@@ -22,7 +22,7 @@ dataSources:
         - RequestForQuote
         - Position
         - Fill
-        - User
+        - Party
       abis:
         - name: MasterAgreement
           file: ./abis/MasterAgreement.json

@@ -4,7 +4,7 @@ import {Market} from '../../generated/schema'
 import {fetchMarket} from '../fetchers'
 import {getMarketType} from '../helpers'
 
-export function createMarket(marketId: BigInt): void {
+export function createMarket(marketId: BigInt): Market {
   const fetchedMarket = fetchMarket(marketId)
 
   let market = new Market(marketId.toString())
@@ -18,4 +18,14 @@ export function createMarket(marketId: BigInt): void {
   market.muonPriceFeedId = fetchedMarket.muonPriceFeedId
   market.fundingRateId = fetchedMarket.fundingRateId
   market.save()
+
+  return market
+}
+
+export function getMarket(marketId: BigInt): Market {
+  let market = Market.load(marketId.toString())
+  if (!market) {
+    market = createMarket(marketId)
+  }
+  return market
 }

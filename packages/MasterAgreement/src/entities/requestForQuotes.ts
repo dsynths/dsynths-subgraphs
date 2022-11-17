@@ -14,6 +14,7 @@ import {
 } from '../helpers'
 import {addUserOpenRequestForQuote} from './party'
 import {fetchRequestForQuote} from '../fetchers'
+import {getMarket} from './markets'
 
 export function getRequestForQuote(rfqId: BigInt): RequestForQuote | null {
   return RequestForQuote.load(rfqId.toString())
@@ -48,7 +49,7 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): RequestForQuo
   )
 
   // Setup relationships
-  rfq.market = fetchedRequestForQuote.marketId.toString()
+  rfq.market = getMarket(fetchedRequestForQuote.marketId).id
 
   // Save the RFQ
   rfq.save()

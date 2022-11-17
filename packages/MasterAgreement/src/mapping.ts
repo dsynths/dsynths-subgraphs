@@ -9,11 +9,14 @@ import {
   RejectOpenMarketSingle,
   RequestOpenMarketSingle
 } from '../generated/MasterAgreement/MasterAgreement'
-import {createMarket, enlist, onRequestForQuote, onOpenPosition, updateRequestForQuoteState} from './entities'
 import {createFill} from './entities/fills'
+import {enlist} from './entities/hedgers'
+import {createMarket} from './entities/markets'
 import {addActivePosition, addActiveRequestForQuote} from './entities/masteragreement'
-import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshots'
 import {removeUserOpenRequestForQuote} from './entities/party'
+import {onOpenPosition} from './entities/positions'
+import {onRequestForQuote, updateRequestForQuoteState} from './entities/requestForQuotes'
+import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshots'
 import {getSide} from './helpers'
 
 export function handleCreateMarket(event: CreateMarket): void {
