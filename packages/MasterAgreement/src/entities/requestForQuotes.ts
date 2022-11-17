@@ -64,6 +64,7 @@ export function updateRequestForQuoteState(rfqId: BigInt): RequestForQuote | nul
 
   const fetchedRequestForQuote = fetchRequestForQuote(rfqId)
   rfq.state = getRequestForQuoteState(fetchedRequestForQuote.state)
+  rfq.mutableTimestamp = fetchedRequestForQuote.mutableTimestamp
   rfq.save()
 
   return rfq
