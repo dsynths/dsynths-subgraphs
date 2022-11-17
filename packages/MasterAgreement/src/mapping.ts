@@ -3,15 +3,18 @@ import {
   CancelOpenMarketSingle,
   CreateMarket,
   Enlist,
+  Fill,
   FillOpenMarketSingle,
   ForceCancelOpenMarketSingle,
   RejectOpenMarketSingle,
   RequestOpenMarketSingle
 } from '../generated/MasterAgreement/MasterAgreement'
 import {createMarket, enlist, onRequestForQuote, onOpenPosition, updateRequestForQuoteState} from './entities'
+import {createFill} from './entities/fills'
 import {addActivePosition, addActiveRequestForQuote} from './entities/masteragreement'
-import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshot'
-import {removeUserOpenRequestForQuote} from './entities/user'
+import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshots'
+import {removeUserOpenRequestForQuote} from './entities/party'
+import {getSide} from './helpers'
 
 export function handleCreateMarket(event: CreateMarket): void {
   createMarket(event.params.marketId)
@@ -19,6 +22,10 @@ export function handleCreateMarket(event: CreateMarket): void {
 
 export function handleEnlist(event: Enlist): void {
   enlist(event.params.hedger)
+}
+
+export function handleFill(event: Fill): void {
+  createFill(event.params.positionId, getSide(event.params.side), event.params.amount, event.params.price, event)
 }
 
 export function handleRequestOpenMarketSingle(event: RequestOpenMarketSingle): void {
@@ -57,7 +64,7 @@ export function handleRejectOpenMarketSingle(event: RejectOpenMarketSingle): voi
 
 export function handleFillOpenMarketSingle(event: FillOpenMarketSingle): void {
   // Create the position
-  const position = onOpenPosition(event.params.rfqId, event.params.positionId, event)
+  const position = onOpenPosition(event.params.rfqId, event.params.positionId)
 
   // Update global MasterAgreement
   const ma = addActivePosition(position)

@@ -1,3 +1,3 @@
 import {Address} from '@graphprotocol/graph-ts'
 
-export const MASTER_AGREEMENT_ADDRESS: Address = Address.fromString('0xF78B5C36b37CF03fB30E1C5fE0eD75002B93a466')
+export const MASTER_AGREEMENT_ADDRESS: Address = Address.fromString('0x575db27ac58A15922424675FC228d6f20eE788BE')

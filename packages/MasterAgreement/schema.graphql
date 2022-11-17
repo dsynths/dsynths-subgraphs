@@ -1,12 +1,13 @@
 enum MarketType {
   FOREX
+  METALS
+  ENERGIES
+  INDICES
+  STOCKS
+  COMMODITIES
+  BONDS
+  ETFS
   CRYPTO
-  STOCK
-}
-
-enum TradingSession {
-  _24_7
-  _24_5
 }
 
 enum Side {
@@ -80,7 +81,6 @@ type Hedger @entity {
   address: Bytes!
   pricingURLs: [String!]!
   marketsURLs: [String!]!
-  user: User!
 }
 
 type Market @entity {
@@ -88,15 +88,18 @@ type Market @entity {
   marketId: BigInt!
   identifier: String!
   marketType: MarketType!
-  tradingSession: TradingSession!
   active: Boolean!
   baseCurrency: String!
   quoteCurrency: String!
   symbol: String!
+  muonPriceFeedId: Bytes!
+  fundingRateId: Bytes!
 }
 
 type RequestForQuote @entity {
   id: ID!
+  creationTimestamp: BigInt!
+  mutableTimestamp: BigInt!
   rfqId: BigInt!
   state: RequestForQuoteState!
   positionType: PositionType!
@@ -107,23 +110,44 @@ type RequestForQuote @entity {
   market: Market!
   side: Side!
   notionalUsd: BigDecimal!
-  leverageUsed: Int!
-  lockedMargin: BigDecimal!
+  lockedMarginA: BigDecimal!
   protocolFee: BigDecimal!
   liquidationFee: BigDecimal!
   cva: BigDecimal!
   minExpectedUnits: BigDecimal!
   maxExpectedUnits: BigDecimal!
+  affiliate: Bytes!
+  leverageUsed: BigDecimal!
+}
+
+type Position @entity {
+  id: ID!
   creationTimestamp: BigInt!
   mutableTimestamp: BigInt!
+  positionId: BigInt!
+  uuid: Bytes!
+  state: PositionState!
+  positionType: PositionType!
+  market: Market!
+  partyA: Bytes!
+  partyB: Bytes!
+  side: Side!
+  lockedMarginA: BigDecimal!
+  lockedMarginB: BigDecimal!
+  protocolFeePaid: BigDecimal!
+  liquidationFee: BigDecimal!
+  cva: BigDecimal!
+  currentBalanceUnits: BigDecimal!
+  initialNotionalUsd: BigDecimal!
+  affiliate: Bytes!
+  leverageUsed: BigDecimal!
 }
 
 type Fill @entity {
   id: ID!
-  fillId: BigInt!
   marketId: BigInt!
-  position: Position!
-  user: User!
+  positionId: BigInt!
+  party: Bytes!
   side: Side!
   amount: BigDecimal!
   price: BigDecimal!
@@ -131,31 +155,9 @@ type Fill @entity {
   timestamp: BigInt!
 }
 
-type Position @entity {
-  id: ID!
-  positionId: BigInt!
-  state: PositionState!
-  positionType: PositionType!
-  market: Market!
-  partyA: Bytes!
-  partyB: Bytes!
-  leverageUsed: Int!
-  side: Side!
-  lockedMargin: BigDecimal!
-  protocolFeePaid: BigDecimal!
-  liquidationFee: BigDecimal!
-  cva: BigDecimal!
-  currentBalanceUnits: BigDecimal!
-  initialNotionalUsd: BigDecimal!
-  creationTimestamp: BigInt!
-  mutableTimestamp: BigInt!
-  fills: [Fill!]! @derivedFrom(field: "position")
-}
-
-type User @entity {
+type Party @entity {
   id: ID!
   openRequestForQuotes: [RequestForQuote!]!
   openPositionsIsolated: [Position!]!
   openPositionsCross: [Position!]!
-  fills: [Fill!]! @derivedFrom(field: "user")
 }

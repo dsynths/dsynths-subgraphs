@@ -1,5 +1,5 @@
 import {BigDecimal, BigInt} from '@graphprotocol/graph-ts'
-import {BIG_INT_ZERO, BIG_INT_ONE} from 'const'
+import {BIG_INT_ZERO, BIG_INT_ONE, BIG_DECIMAL_ZERO} from 'const'
 
 export function exponentToBigDecimal(decimals: BigInt): BigDecimal {
   let bd = BigDecimal.fromString('1')
@@ -24,6 +24,13 @@ export function removeFromArray(arr: string[], item: string): string[] {
     }
   }
   return result
+}
+
+export function calculateLeverageUsed(initialNotionalUsd: BigDecimal, lockedMargin: BigDecimal): BigDecimal {
+  if (initialNotionalUsd.equals(BIG_DECIMAL_ZERO) || lockedMargin.equals(BIG_DECIMAL_ZERO)) {
+    return BIG_DECIMAL_ZERO
+  }
+  return initialNotionalUsd.div(lockedMargin)
 }
 
 export function getRequestForQuoteState(state: number): string {
@@ -98,16 +105,20 @@ export function getMarketType(marketType: number): string {
   if (marketType == 0) {
     return 'FOREX'
   } else if (marketType == 1) {
+    return 'METALS'
+  } else if (marketType == 2) {
+    return 'ENERGIES'
+  } else if (marketType == 3) {
+    return 'INDICES'
+  } else if (marketType == 4) {
+    return 'STOCKS'
+  } else if (marketType == 5) {
+    return 'COMMODITIES'
+  } else if (marketType == 6) {
+    return 'BONDS'
+  } else if (marketType == 7) {
+    return 'ETFS'
+  } else {
     return 'CRYPTO'
-  } else {
-    return 'STOCK'
-  }
-}
-
-export function getTradingSession(tradingSession: number): string {
-  if (tradingSession == 0) {
-    return '_24_7'
-  } else {
-    return '_24_5'
   }
 }

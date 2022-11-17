@@ -1,22 +1,22 @@
-import {Bytes, log} from '@graphprotocol/graph-ts'
-import {Position, RequestForQuote, User} from '../../generated/schema'
+import {Bytes} from '@graphprotocol/graph-ts'
+import {Party, Position, RequestForQuote} from '../../generated/schema'
 import {removeFromArray} from '../helpers'
 
-export function getUser(party: Bytes): User {
-  let user = User.load(party.toHexString())
-  if (!user) {
-    user = new User(party.toHexString())
-    user.openRequestForQuotes = []
-    user.openPositionsIsolated = []
-    user.openPositionsCross = []
-    user.save()
+export function getParty(account: Bytes): Party {
+  let party = Party.load(account.toHexString())
+  if (!party) {
+    party = new Party(account.toHexString())
+    party.openRequestForQuotes = []
+    party.openPositionsIsolated = []
+    party.openPositionsCross = []
+    party.save()
   }
-  return user
+  return party
 }
 
 export function addUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: RequestForQuote): void {
-  let userA = getUser(partyA)
-  let userB = getUser(partyB)
+  let userA = getParty(partyA)
+  let userB = getParty(partyB)
 
   // Copy the list so we can append to it
   const rfqListA = userA.openRequestForQuotes
@@ -33,8 +33,8 @@ export function addUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: Re
 }
 
 export function removeUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: RequestForQuote): void {
-  let userA = getUser(partyA)
-  let userB = getUser(partyB)
+  let userA = getParty(partyA)
+  let userB = getParty(partyB)
 
   // Copy the list so we can remove from it
   const rfqListA = removeFromArray(userA.openRequestForQuotes, rfq.id)
@@ -49,8 +49,8 @@ export function removeUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq:
 }
 
 export function addUserPosition(partyA: Bytes, partyB: Bytes, position: Position): void {
-  let userA = getUser(partyA)
-  let userB = getUser(partyB)
+  let userA = getParty(partyA)
+  let userB = getParty(partyB)
 
   // Copy the lists so we can append to it
   const openPositionsIsolatedA = userA.openPositionsIsolated

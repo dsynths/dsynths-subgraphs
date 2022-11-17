@@ -31,6 +31,8 @@ dataSources:
           handler: handleCreateMarket
         - event: Enlist(indexed address)
           handler: handleEnlist
+        - event: Fill(indexed uint256,uint8,uint256,uint256)
+          handler: handleFill
         - event: RequestOpenMarketSingle(indexed address,indexed uint256)
           handler: handleRequestOpenMarketSingle
         - event: CancelOpenMarketSingle(indexed address,indexed uint256)

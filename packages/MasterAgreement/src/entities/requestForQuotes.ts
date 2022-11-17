@@ -1,14 +1,10 @@
 import {Address, BigInt} from '@graphprotocol/graph-ts'
 import {SCALE} from 'const'
 
-import {
-  MasterAgreement,
-  MasterAgreement__getRequestForQuoteResultRfqStruct
-} from '../../generated/MasterAgreement/MasterAgreement'
 import {RequestForQuote} from '../../generated/schema'
 
-import {MASTER_AGREEMENT_ADDRESS} from '../../constants'
 import {
+  calculateLeverageUsed,
   convertAmountToDecimal,
   getHedgerMode,
   getOrderType,
@@ -16,7 +12,8 @@ import {
   getRequestForQuoteState,
   getSide
 } from '../helpers'
-import {addUserOpenRequestForQuote} from './user'
+import {addUserOpenRequestForQuote} from './party'
+import {fetchRequestForQuote} from '../fetchers'
 
 export function getRequestForQuote(rfqId: BigInt): RequestForQuote | null {
   return RequestForQuote.load(rfqId.toString())
@@ -27,6 +24,8 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): RequestForQuo
 
   // Create the RFQ
   let rfq = new RequestForQuote(rfqId.toString())
+  rfq.creationTimestamp = fetchedRequestForQuote.creationTimestamp
+  rfq.mutableTimestamp = fetchedRequestForQuote.mutableTimestamp
   rfq.rfqId = rfqId
   rfq.state = getRequestForQuoteState(fetchedRequestForQuote.state)
   rfq.positionType = getPositionType(fetchedRequestForQuote.positionType)
@@ -36,15 +35,17 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): RequestForQuo
   rfq.hedgerMode = getHedgerMode(fetchedRequestForQuote.hedgerMode)
   rfq.side = getSide(fetchedRequestForQuote.side)
   rfq.notionalUsd = convertAmountToDecimal(fetchedRequestForQuote.notionalUsd, SCALE)
-  rfq.leverageUsed = fetchedRequestForQuote.leverageUsed
-  rfq.lockedMargin = convertAmountToDecimal(fetchedRequestForQuote.lockedMargin, SCALE)
+  rfq.lockedMarginA = convertAmountToDecimal(fetchedRequestForQuote.lockedMarginA, SCALE)
   rfq.protocolFee = convertAmountToDecimal(fetchedRequestForQuote.protocolFee, SCALE)
   rfq.liquidationFee = convertAmountToDecimal(fetchedRequestForQuote.liquidationFee, SCALE)
   rfq.cva = convertAmountToDecimal(fetchedRequestForQuote.cva, SCALE)
   rfq.minExpectedUnits = convertAmountToDecimal(fetchedRequestForQuote.minExpectedUnits, SCALE)
   rfq.maxExpectedUnits = convertAmountToDecimal(fetchedRequestForQuote.maxExpectedUnits, SCALE)
-  rfq.creationTimestamp = fetchedRequestForQuote.creationTimestamp
-  rfq.mutableTimestamp = fetchedRequestForQuote.mutableTimestamp
+  rfq.affiliate = fetchedRequestForQuote.affiliate
+  rfq.leverageUsed = calculateLeverageUsed(
+    convertAmountToDecimal(fetchedRequestForQuote.notionalUsd, SCALE),
+    convertAmountToDecimal(fetchedRequestForQuote.lockedMarginA, SCALE)
+  )
 
   // Setup relationships
   rfq.market = fetchedRequestForQuote.marketId.toString()
@@ -68,9 +69,4 @@ export function updateRequestForQuoteState(rfqId: BigInt): RequestForQuote | nul
   rfq.save()
 
   return rfq
-}
-
-function fetchRequestForQuote(rfqId: BigInt): MasterAgreement__getRequestForQuoteResultRfqStruct {
-  const contract = MasterAgreement.bind(MASTER_AGREEMENT_ADDRESS)
-  return contract.getRequestForQuote(rfqId)
 }
