@@ -18,6 +18,7 @@ export function createFill(
   let fill = new Fill(id)
   fill = new Fill(id)
   fill.marketId = fetchedPosition.marketId
+  fill.positionId = positionId
   fill.party = fetchedPosition.partyA
   fill.side = side
   fill.amount = convertAmountToDecimal(amount, SCALE)
