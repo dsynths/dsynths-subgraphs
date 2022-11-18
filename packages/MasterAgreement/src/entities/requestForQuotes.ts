@@ -12,9 +12,9 @@ import {
   getRequestForQuoteState,
   getSide
 } from '../helpers'
-import {addUserOpenRequestForQuote} from './party'
 import {fetchRequestForQuote} from '../fetchers'
 import {getMarket} from './markets'
+import {addPartyOpenRequestForQuote} from './party'
 
 export function getRequestForQuote(rfqId: BigInt): RequestForQuote | null {
   return RequestForQuote.load(rfqId.toString())
@@ -55,7 +55,7 @@ export function onRequestForQuote(partyA: Address, rfqId: BigInt): RequestForQuo
   rfq.save()
 
   // Update User state
-  addUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+  addPartyOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
 
   return rfq
 }

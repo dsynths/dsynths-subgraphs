@@ -4,17 +4,19 @@ import {
   CreateMarket,
   Enlist,
   Fill,
+  FillCloseMarket,
   FillOpenMarketSingle,
   ForceCancelOpenMarketSingle,
   RejectOpenMarketSingle,
   RequestOpenMarketSingle
 } from '../generated/MasterAgreement/MasterAgreement'
+
 import {createFill} from './entities/fills'
 import {enlist} from './entities/hedgers'
 import {createMarket} from './entities/markets'
-import {addActivePosition, addActiveRequestForQuote} from './entities/masteragreement'
-import {removeUserOpenRequestForQuote} from './entities/party'
-import {onOpenPosition} from './entities/positions'
+import {addActivePosition, addActiveRequestForQuote, removeActivePosition} from './entities/masteragreement'
+import {removePartyOpenRequestForQuote} from './entities/party'
+import {onFillCloseMarket, onOpenPosition} from './entities/positions'
 import {onRequestForQuote, updateRequestForQuoteState} from './entities/requestForQuotes'
 import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshots'
 import {getSide} from './helpers'
@@ -50,19 +52,19 @@ export function handleCancelOpenMarketSingle(event: CancelOpenMarketSingle): voi
 export function handleForceCancelOpenMarketSingle(event: ForceCancelOpenMarketSingle): void {
   const rfq = updateRequestForQuoteState(event.params.rfqId)
   if (!rfq) return
-  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+  removePartyOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
 }
 
 export function handleAcceptCancelOpenMarketSingle(event: AcceptCancelOpenMarketSingle): void {
   const rfq = updateRequestForQuoteState(event.params.rfqId)
   if (!rfq) return
-  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+  removePartyOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
 }
 
 export function handleRejectOpenMarketSingle(event: RejectOpenMarketSingle): void {
   const rfq = updateRequestForQuoteState(event.params.rfqId)
   if (!rfq) return
-  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+  removePartyOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
 }
 
 export function handleFillOpenMarketSingle(event: FillOpenMarketSingle): void {
@@ -71,6 +73,19 @@ export function handleFillOpenMarketSingle(event: FillOpenMarketSingle): void {
 
   // Update global MasterAgreement
   const ma = addActivePosition(position)
+
+  // Update hourly & daily snapshots
+  updateHourlySnapshot(ma, event)
+  updateDailySnapshot(ma, event)
+}
+
+export function handleFillCloseMarket(event: FillCloseMarket): void {
+  // Update the position
+  const position = onFillCloseMarket(event.params.positionId, event)
+  if (!position) return
+
+  // Update global MasterAgreement
+  const ma = removeActivePosition(position)
 
   // Update hourly & daily snapshots
   updateHourlySnapshot(ma, event)

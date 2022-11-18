@@ -1,8 +1,8 @@
-import {BigInt} from '@graphprotocol/graph-ts'
-import {SCALE} from 'const'
+import {BigInt, ethereum} from '@graphprotocol/graph-ts'
+import {BIG_DECIMAL_ZERO, SCALE} from 'const'
 
 import {Position} from '../../generated/schema'
-import {addUserPosition, removeUserOpenRequestForQuote} from './party'
+import {addPartyPosition, removePartyOpenRequestForQuote, removePartyPosition} from './party'
 import {calculateLeverageUsed, convertAmountToDecimal, getPositionState, getPositionType, getSide} from '../helpers'
 import {getRequestForQuote} from './requestForQuotes'
 import {fetchPosition} from '../fetchers'
@@ -48,8 +48,23 @@ export function onOpenPosition(rfqId: BigInt, positionId: BigInt): Position {
   rfq.save()
 
   // Update User state
-  removeUserOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
-  addUserPosition(position.partyA, position.partyB, position)
+  removePartyOpenRequestForQuote(rfq.partyA, rfq.partyB, rfq)
+  addPartyPosition(position.partyA, position.partyB, position)
+
+  return position
+}
+
+export function onFillCloseMarket(positionId: BigInt, event: ethereum.Event): Position | null {
+  let position = Position.load(positionId.toString())
+  if (!position) return null
+
+  position.mutableTimestamp = event.block.timestamp
+  position.state = 'CLOSED'
+  position.currentBalanceUnits = BIG_DECIMAL_ZERO
+  position.save()
+
+  // Update User state
+  removePartyPosition(position.partyA, position.partyB, position)
 
   return position
 }

@@ -14,7 +14,7 @@ export function getParty(account: Bytes): Party {
   return party
 }
 
-export function addUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: RequestForQuote): void {
+export function addPartyOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: RequestForQuote): void {
   let userA = getParty(partyA)
   let userB = getParty(partyB)
 
@@ -32,7 +32,7 @@ export function addUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: Re
   userB.save()
 }
 
-export function removeUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: RequestForQuote): void {
+export function removePartyOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq: RequestForQuote): void {
   let userA = getParty(partyA)
   let userB = getParty(partyB)
 
@@ -48,7 +48,7 @@ export function removeUserOpenRequestForQuote(partyA: Bytes, partyB: Bytes, rfq:
   userB.save()
 }
 
-export function addUserPosition(partyA: Bytes, partyB: Bytes, position: Position): void {
+export function addPartyPosition(partyA: Bytes, partyB: Bytes, position: Position): void {
   let userA = getParty(partyA)
   let userB = getParty(partyB)
 
@@ -63,6 +63,31 @@ export function addUserPosition(partyA: Bytes, partyB: Bytes, position: Position
   } else {
     openPositionsCrossA.push(position.id)
     openPositionsIsolatedB.push(position.id)
+  }
+
+  // Reassign the list
+  userA.openPositionsIsolated = openPositionsIsolatedA
+  userB.openPositionsIsolated = openPositionsIsolatedB
+  userA.openPositionsCross = openPositionsCrossA
+
+  userA.save()
+  userB.save()
+}
+
+export function removePartyPosition(partyA: Bytes, partyB: Bytes, position: Position): void {
+  let userA = getParty(partyA)
+  let userB = getParty(partyB)
+
+  let openPositionsIsolatedA = userA.openPositionsIsolated
+  let openPositionsIsolatedB = userB.openPositionsIsolated
+  let openPositionsCrossA = userA.openPositionsCross // B is isolated by default
+
+  if (position.positionType == 'ISOLATED') {
+    openPositionsIsolatedA = removeFromArray(openPositionsIsolatedA, position.id)
+    openPositionsIsolatedB = removeFromArray(openPositionsIsolatedB, position.id)
+  } else {
+    openPositionsCrossA = removeFromArray(openPositionsCrossA, position.id)
+    openPositionsIsolatedB = removeFromArray(openPositionsIsolatedB, position.id)
   }
 
   // Reassign the list
