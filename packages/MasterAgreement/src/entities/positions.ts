@@ -8,6 +8,10 @@ import {getRequestForQuote} from './requestForQuotes'
 import {fetchPosition} from '../fetchers'
 import {getMarket} from './markets'
 
+export function getPosition(positionId: BigInt): Position | null {
+  return Position.load(positionId.toString())
+}
+
 export function onOpenPosition(rfqId: BigInt, positionId: BigInt): Position {
   const fetchedPosition = fetchPosition(positionId)
 
@@ -65,6 +69,18 @@ export function onFillCloseMarket(positionId: BigInt, event: ethereum.Event): Po
 
   // Update User state
   removePartyPosition(position.partyA, position.partyB, position)
+
+  return position
+}
+
+export function updatePositionState(positionId: BigInt): Position | null {
+  const position = getPosition(positionId)
+  if (!position) return null
+
+  const fetchedPosition = fetchPosition(positionId)
+  position.state = getPositionState(fetchedPosition.state)
+  position.mutableTimestamp = fetchedPosition.mutableTimestamp
+  position.save()
 
   return position
 }

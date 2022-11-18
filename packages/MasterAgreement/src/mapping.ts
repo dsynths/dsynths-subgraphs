@@ -8,6 +8,7 @@ import {
   FillOpenMarketSingle,
   ForceCancelOpenMarketSingle,
   RejectOpenMarketSingle,
+  RequestCloseMarket,
   RequestOpenMarketSingle
 } from '../generated/MasterAgreement/MasterAgreement'
 
@@ -16,7 +17,7 @@ import {enlist} from './entities/hedgers'
 import {createMarket} from './entities/markets'
 import {addActivePosition, addActiveRequestForQuote, removeActivePosition} from './entities/masteragreement'
 import {removePartyOpenRequestForQuote} from './entities/party'
-import {onFillCloseMarket, onOpenPosition} from './entities/positions'
+import {onFillCloseMarket, onOpenPosition, updatePositionState} from './entities/positions'
 import {onRequestForQuote, updateRequestForQuoteState} from './entities/requestForQuotes'
 import {updateDailySnapshot, updateHourlySnapshot} from './entities/snapshots'
 import {getSide} from './helpers'
@@ -77,6 +78,10 @@ export function handleFillOpenMarketSingle(event: FillOpenMarketSingle): void {
   // Update hourly & daily snapshots
   updateHourlySnapshot(ma, event)
   updateDailySnapshot(ma, event)
+}
+
+export function handleRequestCloseMarket(event: RequestCloseMarket): void {
+  updatePositionState(event.params.positionId)
 }
 
 export function handleFillCloseMarket(event: FillCloseMarket): void {

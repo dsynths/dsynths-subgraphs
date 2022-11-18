@@ -45,5 +45,7 @@ dataSources:
           handler: handleRejectOpenMarketSingle
         - event: FillOpenMarketSingle(indexed address,indexed uint256,indexed uint256)
           handler: handleFillOpenMarketSingle
+        - event: RequestCloseMarket(indexed address,indexed uint256)
+          handler: handleRequestCloseMarket
         - event: FillCloseMarket(indexed address,indexed uint256)
           handler: handleFillCloseMarket
