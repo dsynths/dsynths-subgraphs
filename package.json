@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "repository": "https://github.com/dsynths/dsynths-subgraphs",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "subgraphs/*"
   ],
   "scripts": {
     "build": "yarn workspaces run build",

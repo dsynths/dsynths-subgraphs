@@ -1,0 +1,40 @@
+enum RequestForQuoteState {
+  NEW
+  CANCELED
+  ACCEPTED
+}
+
+enum PositionState {
+  OPEN
+  MARKET_CLOSE_REQUESTED
+  LIMIT_CLOSE_REQUESTED
+  LIMIT_CLOSE_ACTIVE
+  CLOSED
+  LIQUIDATED
+}
+
+type RequestForQuote @entity {
+  id: ID!
+  rfqId: BigInt!
+  state: RequestForQuoteState!
+  partyA: Bytes!
+  partyB: Bytes!
+}
+
+type Position @entity {
+  id: ID!
+  rfqId: BigInt!
+  positionId: BigInt!
+  state: PositionState!
+  partyA: Bytes!
+  partyB: Bytes!
+  currentBalanceUnits: BigDecimal!
+  entryPrice: BigDecimal!
+  exitPrice: BigDecimal!
+}
+
+type Party @entity {
+  id: ID!
+  openRequestForQuotes: [RequestForQuote!]!
+  openPositions: [Position!]!
+}
