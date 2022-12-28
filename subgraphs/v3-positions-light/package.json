@@ -1,5 +1,5 @@
 {
-  "name": "v3-positions",
+  "name": "v3-positions-light",
   "private": true,
   "license": "MIT",
   "version": "1.0.0",
@@ -7,7 +7,7 @@
   "scripts": {
     "codegen": "graph codegen --output-dir ./generated/",
     "build": "graph build",
-    "deploy:arbitrum": "graph deploy dsynths/deus-v3-positions --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
+    "deploy:arbitrum": "graph deploy dsynths/deus-v3-positions-light --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
     "prepare:arbitrum": "mustache ./config/arbitrum.json template.yaml > subgraph.yaml && mustache ./config/arbitrum.json ./constants/template.ts > ./constants/index.ts"
   }
 }

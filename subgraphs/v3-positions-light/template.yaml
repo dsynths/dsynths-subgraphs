@@ -1,6 +1,6 @@
 specVersion: 0.0.5
-description: DEUS V3 Positions
-repository: https://github.com/dsynths/dsynths-subgraphs/tree/main/subgraphs/v3-positions
+description: DEUS V3 Positions Light
+repository: https://github.com/dsynths/dsynths-subgraphs/tree/main/subgraphs/v3-positions-light
 schema:
   file: ./schema.graphql
 dataSources:

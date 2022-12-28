@@ -1,5 +1,5 @@
 import {BigDecimal, BigInt} from '@graphprotocol/graph-ts'
-import {BIG_INT_ZERO, BIG_INT_ONE, BIG_DECIMAL_ZERO} from 'const'
+import {BIG_INT_ZERO, BIG_INT_ONE} from 'const'
 
 export function exponentToBigDecimal(decimals: BigInt): BigDecimal {
   let bd = BigDecimal.fromString('1')
@@ -24,30 +24,4 @@ export function removeFromArray(arr: string[], item: string): string[] {
     }
   }
   return result
-}
-
-export function getPositionType(positionType: number): string {
-  if (positionType == 0) {
-    return 'ISOLATED'
-  } else {
-    return 'CROSS'
-  }
-}
-
-export function getOrderType(orderType: number): string {
-  if (orderType == 0) {
-    return 'LIMIT'
-  } else {
-    return 'MARKET'
-  }
-}
-
-export function getHedgerMode(hedgerMode: number): string {
-  if (hedgerMode == 0) {
-    return 'SINGLE'
-  } else if (hedgerMode == 1) {
-    return 'HYBRID'
-  } else {
-    return 'AUTO'
-  }
 }

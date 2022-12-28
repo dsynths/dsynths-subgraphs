@@ -13,46 +13,21 @@ enum PositionState {
   LIQUIDATED
 }
 
-enum HedgerMode {
-  SINGLE
-  HYBRID
-  AUTO
-}
-
-enum OrderType {
-  LIMIT
-  MARKET
-}
-
-enum PositionType {
-  ISOLATED
-  CROSS
-}
-
 type RequestForQuote @entity {
   id: ID!
-  creationTimestamp: BigInt!
-  mutableTimestamp: BigInt!
   rfqId: BigInt!
   state: RequestForQuoteState!
   partyA: Bytes!
   partyB: Bytes!
-  positionType: PositionType!
-  orderType: OrderType!
-  hedgerMode: HedgerMode!
 }
 
 type Position @entity {
   id: ID!
-  creationTimestamp: BigInt!
-  mutableTimestamp: BigInt!
   rfqId: BigInt!
   positionId: BigInt!
   state: PositionState!
-  positionType: PositionType!
   partyA: Bytes!
   partyB: Bytes!
-  uuid: Bytes!
   currentBalanceUnits: BigDecimal!
   entryPrice: BigDecimal!
   exitPrice: BigDecimal!
@@ -60,8 +35,6 @@ type Position @entity {
 
 type Party @entity {
   id: ID!
-  openRequestForQuotesIsolated: [RequestForQuote!]!
-  openRequestForQuotesCross: [RequestForQuote!]!
-  openPositionsIsolated: [Position!]!
-  openPositionsCross: [Position!]!
+  openRequestForQuotes: [RequestForQuote!]!
+  openPositions: [Position!]!
 }

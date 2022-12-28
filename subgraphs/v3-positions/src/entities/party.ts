@@ -6,8 +6,10 @@ export function getParty(account: Bytes): Party {
   let party = Party.load(account.toHexString())
   if (!party) {
     party = new Party(account.toHexString())
-    party.openRequestForQuotes = []
-    party.openPositions = []
+    party.openRequestForQuotesIsolated = []
+    party.openRequestForQuotesCross = []
+    party.openPositionsIsolated = []
+    party.openPositionsCross = []
     party.save()
   }
   return party
@@ -16,33 +18,59 @@ export function getParty(account: Bytes): Party {
 export function addRequestForQuote(account: Bytes, rfq: RequestForQuote): void {
   let party = getParty(account)
 
-  const list = party.openRequestForQuotes
-  list.push(rfq.id)
-  party.openRequestForQuotes = list
-  party.save()
+  if (rfq.positionType == 'ISOLATED') {
+    const list = party.openRequestForQuotesIsolated
+    list.push(rfq.id)
+    party.openRequestForQuotesIsolated = list
+    party.save()
+  } else {
+    const list = party.openRequestForQuotesCross
+    list.push(rfq.id)
+    party.openRequestForQuotesCross = list
+    party.save()
+  }
 }
 
 export function removeRequestForQuote(account: Bytes, rfq: RequestForQuote): void {
   let party = getParty(account)
 
-  const list = removeFromArray(party.openRequestForQuotes, rfq.id)
-  party.openRequestForQuotes = list
-  party.save()
+  if (rfq.positionType == 'ISOLATED') {
+    const list = removeFromArray(party.openRequestForQuotesIsolated, rfq.id)
+    party.openRequestForQuotesIsolated = list
+    party.save()
+  } else {
+    const list = removeFromArray(party.openRequestForQuotesCross, rfq.id)
+    party.openRequestForQuotesCross = list
+    party.save()
+  }
 }
 
-export function addPosition(account: Bytes, position: Position): void {
+export function addPosition(account: Bytes, position: Position, positionType: string): void {
   let party = getParty(account)
 
-  const list = party.openPositions
-  list.push(position.id)
-  party.openPositions = list
-  party.save()
+  if (positionType == 'ISOLATED') {
+    const list = party.openPositionsIsolated
+    list.push(position.id)
+    party.openPositionsIsolated = list
+    party.save()
+  } else {
+    const list = party.openPositionsCross
+    list.push(position.id)
+    party.openPositionsCross = list
+    party.save()
+  }
 }
 
-export function removePosition(account: Bytes, position: Position): void {
+export function removePosition(account: Bytes, position: Position, positionType: string): void {
   let party = getParty(account)
 
-  const list = removeFromArray(party.openPositions, position.id)
-  party.openPositions = list
-  party.save()
+  if (positionType == 'ISOLATED') {
+    const list = removeFromArray(party.openPositionsIsolated, position.id)
+    party.openPositionsIsolated = list
+    party.save()
+  } else {
+    const list = removeFromArray(party.openPositionsCross, position.id)
+    party.openPositionsCross = list
+    party.save()
+  }
 }

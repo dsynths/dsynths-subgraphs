@@ -21,7 +21,7 @@ export function handleRequestForQuoteNew(event: RequestForQuoteNew): void {
 
 export function handleRequestForQuoteCanceled(event: RequestForQuoteCanceled): void {
   // Update RFQ state
-  const rfq = updateRequestForQuoteState(event.params.rfqId, 'CANCELED', event)
+  const rfq = updateRequestForQuoteState(event.params.rfqId, 'CANCELED')
   if (!rfq) return
 
   // Remove RFQ from PartyA
@@ -40,30 +40,30 @@ export function handleOpenPosition(event: OpenPosition): void {
   )
 
   // Update RFQ state
-  const rfq = updateRequestForQuoteState(event.params.rfqId, 'ACCEPTED', event)
+  const rfq = updateRequestForQuoteState(event.params.rfqId, 'ACCEPTED')
   if (!rfq) return
 
   // Remove RFQ from PartyA
   removeRequestForQuote(rfq.partyA, rfq)
 
-  // Append Position to parties
-  addPosition(event.params.partyA, position, position.positionType)
-  addPosition(event.params.partyB, position, 'ISOLATED')
+  // Append Position to both parties
+  addPosition(event.params.partyA, position)
+  addPosition(event.params.partyB, position)
 }
 
 export function handleRequestClosePosition(event: RequestClosePosition): void {
   // Update Position state
-  updatePositionState(event.params.positionId, 'MARKET_CLOSE_REQUESTED', event)
+  updatePositionState(event.params.positionId, 'MARKET_CLOSE_REQUESTED')
 }
 
 export function handleCancelClosePosition(event: CancelClosePosition): void {
   // Update Position state
-  updatePositionState(event.params.positionId, 'OPEN', event)
+  updatePositionState(event.params.positionId, 'OPEN')
 }
 
 export function handleClosePosition(event: ClosePosition): void {
   // Update Position state
-  const position = updatePositionState(event.params.positionId, 'CLOSED', event)
+  const position = updatePositionState(event.params.positionId, 'CLOSED')
   if (!position) return
 
   // Update Position units and price
@@ -71,13 +71,13 @@ export function handleClosePosition(event: ClosePosition): void {
   updatePositionExitPrice(event.params.positionId, event.params.avgPriceUsd)
 
   // Remove Position from parties
-  removePosition(position.partyA, position, position.positionType)
-  removePosition(position.partyB, position, 'ISOLATED')
+  removePosition(position.partyA, position)
+  removePosition(position.partyB, position)
 }
 
 export function handleLiquidate(event: Liquidate): void {
   // Update Position state
-  const position = updatePositionState(event.params.positionId, 'LIQUIDATED', event)
+  const position = updatePositionState(event.params.positionId, 'LIQUIDATED')
   if (!position) return
 
   // Update Position units and price
@@ -85,6 +85,6 @@ export function handleLiquidate(event: Liquidate): void {
   updatePositionExitPrice(event.params.positionId, event.params.priceUsd)
 
   // Remove Position from parties
-  removePosition(position.partyA, position, position.positionType)
-  removePosition(position.partyB, position, 'ISOLATED')
+  removePosition(position.partyA, position)
+  removePosition(position.partyB, position)
 }
