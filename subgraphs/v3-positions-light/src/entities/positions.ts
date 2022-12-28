@@ -1,4 +1,4 @@
-import {Address, BigInt} from '@graphprotocol/graph-ts'
+import {Address, BigInt, ethereum} from '@graphprotocol/graph-ts'
 import {BIG_DECIMAL_ZERO, SCALE} from 'const'
 import {Position} from '../../generated/schema'
 import {convertAmountToDecimal} from '../helpers'
@@ -13,9 +13,12 @@ export function createPosition(
   partyA: Address,
   partyB: Address,
   currentBalanceUnits: BigInt,
-  entryPrice: BigInt
+  entryPrice: BigInt,
+  event: ethereum.Event
 ): Position {
   let position = new Position(positionId.toHexString())
+  position.creationTimestamp = event.block.timestamp
+  position.mutableTimestamp = event.block.timestamp
   position.rfqId = rfqId
   position.positionId = positionId
   position.state = 'OPEN'
@@ -28,10 +31,11 @@ export function createPosition(
   return position
 }
 
-export function updatePositionState(positionId: BigInt, state: string): Position | null {
+export function updatePositionState(positionId: BigInt, state: string, event: ethereum.Event): Position | null {
   let position = getPosition(positionId)
   if (position) {
     position.state = state
+    position.mutableTimestamp = event.block.timestamp
     position.save()
   }
   return position
