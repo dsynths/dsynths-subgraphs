@@ -1,0 +1,70 @@
+enum RequestForQuoteState {
+  NEW
+  CANCELED
+  ACCEPTED
+}
+
+enum PositionState {
+  OPEN
+  MARKET_CLOSE_REQUESTED
+  LIMIT_CLOSE_REQUESTED
+  LIMIT_CLOSE_ACTIVE
+  CLOSED
+  LIQUIDATED
+}
+
+enum Side {
+  BUY
+  SELL
+}
+
+type RequestForQuote @entity {
+  id: ID!
+  lastSnapshotId: ID!
+}
+
+type Position @entity {
+  id: ID!
+  lastSnapshotId: ID!
+}
+
+type RequestForQuoteSnapshot @entity {
+  id: ID!
+  timestamp: BigInt!
+  rfqId: BigInt!
+  marketId: BigInt!
+  oldState: RequestForQuoteState!
+  newState: RequestForQuoteState!
+  partyA: Bytes!
+}
+
+type PositionSnapshot @entity {
+  id: ID!
+  timestamp: BigInt!
+  positionId: BigInt!
+  marketId: BigInt!
+  partyA: Bytes!
+  partyB: Bytes!
+  oldState: PositionState!
+  newState: PositionState!
+  oldBalanceUnits: BigDecimal!
+  newBalanceUnits: BigDecimal!
+  entryPrice: BigDecimal!
+  exitPrice: BigDecimal!
+  oldLockedMarginA: BigDecimal!
+  newLockedMarginA: BigDecimal!
+  oldLockedMarginB: BigDecimal!
+  newLockedMarginB: BigDecimal!
+}
+
+type Trade @entity {
+  id: ID!
+  timestamp: BigInt!
+  positionId: BigInt!
+  marketId: BigInt!
+  party: Bytes!
+  side: Side!
+  amount: BigDecimal!
+  price: BigDecimal!
+  transactionHash: String!
+}
