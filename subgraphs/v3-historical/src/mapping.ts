@@ -26,7 +26,8 @@ import {
   getLastRequestForQuoteSnapshot,
   updateRequestForQuoteLastSnapshot
 } from './entities/requestForQuotes'
-import {convertAmountToDecimal} from './helpers'
+import {createTrade} from './entities/trades'
+import {convertAmountToDecimal, getSide} from './helpers'
 
 export function handleRequestForQuoteNew(event: RequestForQuoteNew): void {
   // Create RFQ Snapshot from Genesis
@@ -64,6 +65,9 @@ export function handleOpenPosition(event: OpenPosition): void {
 
   // Create genesis Position & assign snapshot to it
   createPositionGenesis(snapshot.positionId, snapshot.id)
+
+  // Log the Trade details
+  createTrade(event.params.positionId, event.params.amountUnits, event.params.avgPriceUsd, true, event)
 }
 
 export function handleRequestClosePosition(event: RequestClosePosition): void {
@@ -100,6 +104,9 @@ export function handleClosePosition(event: ClosePosition): void {
 
   // Assign snapshot to Position
   updatePositionLastSnapshot(snapshot.positionId, snapshot.id)
+
+  // Log the Trade details
+  createTrade(event.params.positionId, event.params.amountUnits, event.params.avgPriceUsd, false, event)
 }
 
 export function handleLiquidate(event: Liquidate): void {
@@ -112,4 +119,7 @@ export function handleLiquidate(event: Liquidate): void {
 
   // Assign snapshot to Position
   updatePositionLastSnapshot(snapshot.positionId, snapshot.id)
+
+  // Log the Trade details
+  createTrade(event.params.positionId, event.params.amountUnits, event.params.priceUsd, false, event)
 }

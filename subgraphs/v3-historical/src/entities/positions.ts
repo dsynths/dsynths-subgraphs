@@ -127,7 +127,7 @@ export function createPositionSnapshotLiquidate(
   return position
 }
 
-function fetchPosition(positionId: BigInt): MasterAgreement__getPositionResultPositionStruct {
+export function fetchPosition(positionId: BigInt): MasterAgreement__getPositionResultPositionStruct {
   const contract = MasterAgreement.bind(MASTER_AGREEMENT_ADDRESS)
   return contract.getPosition(positionId)
 }

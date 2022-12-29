@@ -15,3 +15,11 @@ export function convertAmountToDecimal(amount: BigInt, decimals: BigInt): BigDec
   }
   return amount.toBigDecimal().div(exponentToBigDecimal(decimals))
 }
+
+export function getSide(side: number): string {
+  if (side == 0) {
+    return 'BUY'
+  } else {
+    return 'SELL'
+  }
+}
