@@ -9,6 +9,9 @@
   "scripts": {
     "codegen": " ",
     "build": " ",
-    "prepare:arbitrum": "mustache ../../config/arbitrum.json index.template.ts > index.ts"
+    "deploy:fusd": " ",
+    "deploy:dei": " ",
+    "prepare:fusd": "mustache ../../config/fusd.json index.template.ts > index.ts",
+    "prepare:dei": "mustache ../../config/dei.json index.template.ts > index.ts"
   }
 }

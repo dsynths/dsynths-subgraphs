@@ -2,18 +2,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "address", "name": "previousOwner", "type": "address"},
+      {"indexed": true, "internalType": "address", "name": "newOwner", "type": "address"}
     ],
     "name": "OwnershipTransferred",
     "type": "event"
@@ -25,13 +15,7 @@
     "stateMutability": "view",
     "type": "function"
   },
-  {
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
+  {"inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function"},
   {
     "inputs": [{"internalType": "address", "name": "account", "type": "address"}],
     "name": "transferOwnership",
@@ -42,24 +26,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "role",
-        "type": "bytes32"
-      },
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "previousAdminRole",
-        "type": "bytes32"
-      },
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "newAdminRole",
-        "type": "bytes32"
-      }
+      {"indexed": true, "internalType": "bytes32", "name": "role", "type": "bytes32"},
+      {"indexed": true, "internalType": "bytes32", "name": "previousAdminRole", "type": "bytes32"},
+      {"indexed": true, "internalType": "bytes32", "name": "newAdminRole", "type": "bytes32"}
     ],
     "name": "RoleAdminChanged",
     "type": "event"
@@ -67,24 +36,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "role",
-        "type": "bytes32"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "bytes32", "name": "role", "type": "bytes32"},
+      {"indexed": true, "internalType": "address", "name": "account", "type": "address"},
+      {"indexed": true, "internalType": "address", "name": "sender", "type": "address"}
     ],
     "name": "RoleGranted",
     "type": "event"
@@ -92,24 +46,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "role",
-        "type": "bytes32"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "bytes32", "name": "role", "type": "bytes32"},
+      {"indexed": true, "internalType": "address", "name": "account", "type": "address"},
+      {"indexed": true, "internalType": "address", "name": "sender", "type": "address"}
     ],
     "name": "RoleRevoked",
     "type": "event"
@@ -248,18 +187,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldCVA",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newCVA",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldCVA", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newCVA", "type": "uint256"}
     ],
     "name": "SetCVA",
     "type": "event"
@@ -267,18 +196,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "oldAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "newAddress",
-        "type": "address"
-      }
+      {"indexed": false, "internalType": "address", "name": "oldAddress", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "newAddress", "type": "address"}
     ],
     "name": "SetCollateral",
     "type": "event"
@@ -286,18 +205,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldFee",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newFee",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldFee", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newFee", "type": "uint256"}
     ],
     "name": "SetLiquidationFee",
     "type": "event"
@@ -305,18 +214,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldMax",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newMax",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldMax", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newMax", "type": "uint256"}
     ],
     "name": "SetMaxOpenPositionsCross",
     "type": "event"
@@ -324,18 +223,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldShare",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newShare",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldShare", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newShare", "type": "uint256"}
     ],
     "name": "SetProtocolLiquidationShare",
     "type": "event"
@@ -343,18 +232,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldTimeout",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newTimeout",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldTimeout", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newTimeout", "type": "uint256"}
     ],
     "name": "SetRequestTimeout",
     "type": "event"
@@ -381,26 +260,14 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "maxOpenPositionsCross",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{"internalType": "uint256", "name": "maxOpenPositionsCross", "type": "uint256"}],
     "name": "setMaxOpenPositionsCross",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "protocolLiquidationShare",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{"internalType": "uint256", "name": "protocolLiquidationShare", "type": "uint256"}],
     "name": "setProtocolLiquidationShare",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -434,39 +301,17 @@
     "inputs": [
       {
         "components": [
-          {
-            "internalType": "address",
-            "name": "facetAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "enum IDiamondCut.FacetCutAction",
-            "name": "action",
-            "type": "uint8"
-          },
-          {
-            "internalType": "bytes4[]",
-            "name": "functionSelectors",
-            "type": "bytes4[]"
-          }
+          {"internalType": "address", "name": "facetAddress", "type": "address"},
+          {"internalType": "enum IDiamondCut.FacetCutAction", "name": "action", "type": "uint8"},
+          {"internalType": "bytes4[]", "name": "functionSelectors", "type": "bytes4[]"}
         ],
         "indexed": false,
         "internalType": "struct IDiamondCut.FacetCut[]",
         "name": "_diamondCut",
         "type": "tuple[]"
       },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "_init",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "_calldata",
-        "type": "bytes"
-      }
+      {"indexed": false, "internalType": "address", "name": "_init", "type": "address"},
+      {"indexed": false, "internalType": "bytes", "name": "_calldata", "type": "bytes"}
     ],
     "name": "DiamondCut",
     "type": "event"
@@ -475,21 +320,9 @@
     "inputs": [
       {
         "components": [
-          {
-            "internalType": "address",
-            "name": "facetAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "enum IDiamondCut.FacetCutAction",
-            "name": "action",
-            "type": "uint8"
-          },
-          {
-            "internalType": "bytes4[]",
-            "name": "functionSelectors",
-            "type": "bytes4[]"
-          }
+          {"internalType": "address", "name": "facetAddress", "type": "address"},
+          {"internalType": "enum IDiamondCut.FacetCutAction", "name": "action", "type": "uint8"},
+          {"internalType": "bytes4[]", "name": "functionSelectors", "type": "bytes4[]"}
         ],
         "internalType": "struct IDiamondCut.FacetCut[]",
         "name": "_diamondCut",
@@ -504,13 +337,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bytes4",
-        "name": "_functionSelector",
-        "type": "bytes4"
-      }
-    ],
+    "inputs": [{"internalType": "bytes4", "name": "_functionSelector", "type": "bytes4"}],
     "name": "facetAddress",
     "outputs": [{"internalType": "address", "name": "facetAddress_", "type": "address"}],
     "stateMutability": "view",
@@ -519,26 +346,14 @@
   {
     "inputs": [],
     "name": "facetAddresses",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "facetAddresses_",
-        "type": "address[]"
-      }
-    ],
+    "outputs": [{"internalType": "address[]", "name": "facetAddresses_", "type": "address[]"}],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [{"internalType": "address", "name": "_facet", "type": "address"}],
     "name": "facetFunctionSelectors",
-    "outputs": [
-      {
-        "internalType": "bytes4[]",
-        "name": "facetFunctionSelectors_",
-        "type": "bytes4[]"
-      }
-    ],
+    "outputs": [{"internalType": "bytes4[]", "name": "facetFunctionSelectors_", "type": "bytes4[]"}],
     "stateMutability": "view",
     "type": "function"
   },
@@ -548,16 +363,8 @@
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "address",
-            "name": "facetAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "bytes4[]",
-            "name": "functionSelectors",
-            "type": "bytes4[]"
-          }
+          {"internalType": "address", "name": "facetAddress", "type": "address"},
+          {"internalType": "bytes4[]", "name": "functionSelectors", "type": "bytes4[]"}
         ],
         "internalType": "struct IDiamondLoupe.Facet[]",
         "name": "facets_",
@@ -570,18 +377,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "hedger",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "hedger", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256"}
     ],
     "name": "Enlist",
     "type": "event"
@@ -651,38 +448,14 @@
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market",
         "name": "market",
@@ -700,38 +473,14 @@
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market",
         "name": "market",
@@ -756,38 +505,14 @@
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market[]",
         "name": "markets",
@@ -805,38 +530,14 @@
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market[]",
         "name": "markets",
@@ -847,51 +548,21 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "positionIds",
-        "type": "uint256[]"
-      }
-    ],
+    "inputs": [{"internalType": "uint256[]", "name": "positionIds", "type": "uint256[]"}],
     "name": "getMarketsFromPositionIds",
     "outputs": [
       {
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market[]",
         "name": "markets",
@@ -912,38 +583,14 @@
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market[]",
         "name": "markets",
@@ -977,18 +624,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "marketId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "marketId", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256"}
     ],
     "name": "CreateMarket",
     "type": "event"
@@ -996,24 +633,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "marketId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "oldStatus",
-        "type": "bool"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "newStatus",
-        "type": "bool"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "marketId", "type": "uint256"},
+      {"indexed": false, "internalType": "bool", "name": "oldStatus", "type": "bool"},
+      {"indexed": false, "internalType": "bool", "name": "newStatus", "type": "bool"}
     ],
     "name": "UpdateMarketActive",
     "type": "event"
@@ -1021,24 +643,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "marketId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "oldFundingRateId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "newFundingRateId",
-        "type": "bytes32"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "marketId", "type": "uint256"},
+      {"indexed": false, "internalType": "bytes32", "name": "oldFundingRateId", "type": "bytes32"},
+      {"indexed": false, "internalType": "bytes32", "name": "newFundingRateId", "type": "bytes32"}
     ],
     "name": "UpdateMarketFundingRateId",
     "type": "event"
@@ -1046,24 +653,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "marketId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "oldIdentifier",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "newIdentifier",
-        "type": "string"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "marketId", "type": "uint256"},
+      {"indexed": false, "internalType": "string", "name": "oldIdentifier", "type": "string"},
+      {"indexed": false, "internalType": "string", "name": "newIdentifier", "type": "string"}
     ],
     "name": "UpdateMarketIdentifier",
     "type": "event"
@@ -1071,24 +663,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "marketId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "oldMuonPriceFeedId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "newMuonPriceFeedId",
-        "type": "bytes32"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "marketId", "type": "uint256"},
+      {"indexed": false, "internalType": "bytes32", "name": "oldMuonPriceFeedId", "type": "bytes32"},
+      {"indexed": false, "internalType": "bytes32", "name": "newMuonPriceFeedId", "type": "bytes32"}
     ],
     "name": "UpdateMarketMuonPriceFeedId",
     "type": "event"
@@ -1096,24 +673,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "marketId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldProtocolFee",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newProtocolFee",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "marketId", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "oldProtocolFee", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newProtocolFee", "type": "uint256"}
     ],
     "name": "UpdateProtocolFee",
     "type": "event"
@@ -1121,20 +683,12 @@
   {
     "inputs": [
       {"internalType": "string", "name": "identifier", "type": "string"},
-      {
-        "internalType": "enum MarketType",
-        "name": "marketType",
-        "type": "uint8"
-      },
+      {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
       {"internalType": "bool", "name": "active", "type": "bool"},
       {"internalType": "string", "name": "baseCurrency", "type": "string"},
       {"internalType": "string", "name": "quoteCurrency", "type": "string"},
       {"internalType": "string", "name": "symbol", "type": "string"},
-      {
-        "internalType": "bytes32",
-        "name": "muonPriceFeedId",
-        "type": "bytes32"
-      },
+      {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
       {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
       {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
     ],
@@ -1144,38 +698,14 @@
         "components": [
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "string", "name": "identifier", "type": "string"},
-          {
-            "internalType": "enum MarketType",
-            "name": "marketType",
-            "type": "uint8"
-          },
+          {"internalType": "enum MarketType", "name": "marketType", "type": "uint8"},
           {"internalType": "bool", "name": "active", "type": "bool"},
-          {
-            "internalType": "string",
-            "name": "baseCurrency",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "quoteCurrency",
-            "type": "string"
-          },
+          {"internalType": "string", "name": "baseCurrency", "type": "string"},
+          {"internalType": "string", "name": "quoteCurrency", "type": "string"},
           {"internalType": "string", "name": "symbol", "type": "string"},
-          {
-            "internalType": "bytes32",
-            "name": "muonPriceFeedId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "fundingRateId",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          }
+          {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"},
+          {"internalType": "bytes32", "name": "fundingRateId", "type": "bytes32"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"}
         ],
         "internalType": "struct Market",
         "name": "market",
@@ -1218,11 +748,7 @@
   {
     "inputs": [
       {"internalType": "uint256", "name": "marketId", "type": "uint256"},
-      {
-        "internalType": "bytes32",
-        "name": "muonPriceFeedId",
-        "type": "bytes32"
-      }
+      {"internalType": "bytes32", "name": "muonPriceFeedId", "type": "bytes32"}
     ],
     "name": "updateMarketMuonPriceFeedId",
     "outputs": [],
@@ -1242,18 +768,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "AddFreeMarginCross",
     "type": "event"
@@ -1261,24 +777,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"},
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"}
     ],
     "name": "AddFreeMarginIsolated",
     "type": "event"
@@ -1286,18 +787,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "Allocate",
     "type": "event"
@@ -1305,18 +796,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "Deallocate",
     "type": "event"
@@ -1324,18 +805,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "Deposit",
     "type": "event"
@@ -1343,18 +814,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "RemoveFreeMarginCross",
     "type": "event"
@@ -1362,18 +823,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "party",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "address", "name": "party", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "Withdraw",
     "type": "event"
@@ -1468,13 +919,7 @@
     "stateMutability": "view",
     "type": "function"
   },
-  {
-    "inputs": [],
-    "name": "removeFreeMarginCross",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
+  {"inputs": [], "name": "removeFreeMarginCross", "outputs": [], "stateMutability": "nonpayable", "type": "function"},
   {
     "inputs": [{"internalType": "uint256", "name": "amount", "type": "uint256"}],
     "name": "withdraw",
@@ -1485,68 +930,22 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256"}
     ],
     "name": "CollectFees",
     "type": "event"
   },
-  {
-    "inputs": [],
-    "name": "collectFees",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
+  {"inputs": [], "name": "collectFees", "outputs": [], "stateMutability": "nonpayable", "type": "function"},
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "targetParty",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountUnits",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "priceUsd",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "targetParty", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amountUnits", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "priceUsd", "type": "uint256"}
     ],
     "name": "Liquidate",
     "type": "event"
@@ -1554,13 +953,10 @@
   {
     "inputs": [
       {"internalType": "address", "name": "partyA", "type": "address"},
-      {
-        "internalType": "uint256[]",
-        "name": "positionIds",
-        "type": "uint256[]"
-      },
+      {"internalType": "uint256[]", "name": "positionIds", "type": "uint256[]"},
       {"internalType": "uint256[]", "name": "bidPrices", "type": "uint256[]"},
       {"internalType": "uint256[]", "name": "askPrices", "type": "uint256[]"},
+      {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
       {"internalType": "bytes", "name": "reqId", "type": "bytes"},
       {
         "components": [
@@ -1584,6 +980,7 @@
       {"internalType": "uint256", "name": "positionId", "type": "uint256"},
       {"internalType": "uint256", "name": "bidPrice", "type": "uint256"},
       {"internalType": "uint256", "name": "askPrice", "type": "uint256"},
+      {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
       {"internalType": "bytes", "name": "reqId", "type": "bytes"},
       {
         "components": [
@@ -1630,24 +1027,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes16",
-        "name": "oldUuid",
-        "type": "bytes16"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes16",
-        "name": "newUuid",
-        "type": "bytes16"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"},
+      {"indexed": false, "internalType": "bytes16", "name": "oldUuid", "type": "bytes16"},
+      {"indexed": false, "internalType": "bytes16", "name": "newUuid", "type": "bytes16"}
     ],
     "name": "UpdateUuid",
     "type": "event"
@@ -1697,11 +1079,7 @@
     "inputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "positionId",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "positionId", "type": "uint256"},
           {"internalType": "uint256", "name": "bidPrice", "type": "uint256"},
           {"internalType": "uint256", "name": "askPrice", "type": "uint256"}
         ],
@@ -1757,67 +1135,23 @@
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "creationTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "mutableTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "positionId",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "creationTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "mutableTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "positionId", "type": "uint256"},
           {"internalType": "bytes16", "name": "uuid", "type": "bytes16"},
-          {
-            "internalType": "enum PositionState",
-            "name": "state",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum PositionType",
-            "name": "positionType",
-            "type": "uint8"
-          },
+          {"internalType": "enum PositionState", "name": "state", "type": "uint8"},
+          {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "address", "name": "partyA", "type": "address"},
           {"internalType": "address", "name": "partyB", "type": "address"},
           {"internalType": "enum Side", "name": "side", "type": "uint8"},
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginA",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginB",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFeePaid",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "liquidationFee",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "lockedMarginA", "type": "uint256"},
+          {"internalType": "uint256", "name": "lockedMarginB", "type": "uint256"},
+          {"internalType": "uint256", "name": "protocolFeePaid", "type": "uint256"},
+          {"internalType": "uint256", "name": "liquidationFee", "type": "uint256"},
           {"internalType": "uint256", "name": "cva", "type": "uint256"},
-          {
-            "internalType": "uint256",
-            "name": "currentBalanceUnits",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "initialNotionalUsd",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "currentBalanceUnits", "type": "uint256"},
+          {"internalType": "uint256", "name": "initialNotionalUsd", "type": "uint256"},
           {"internalType": "address", "name": "affiliate", "type": "address"}
         ],
         "internalType": "struct Position",
@@ -1829,78 +1163,28 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "positionIds",
-        "type": "uint256[]"
-      }
-    ],
+    "inputs": [{"internalType": "uint256[]", "name": "positionIds", "type": "uint256[]"}],
     "name": "getPositions",
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "creationTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "mutableTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "positionId",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "creationTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "mutableTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "positionId", "type": "uint256"},
           {"internalType": "bytes16", "name": "uuid", "type": "bytes16"},
-          {
-            "internalType": "enum PositionState",
-            "name": "state",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum PositionType",
-            "name": "positionType",
-            "type": "uint8"
-          },
+          {"internalType": "enum PositionState", "name": "state", "type": "uint8"},
+          {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "address", "name": "partyA", "type": "address"},
           {"internalType": "address", "name": "partyB", "type": "address"},
           {"internalType": "enum Side", "name": "side", "type": "uint8"},
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginA",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginB",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFeePaid",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "liquidationFee",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "lockedMarginA", "type": "uint256"},
+          {"internalType": "uint256", "name": "lockedMarginB", "type": "uint256"},
+          {"internalType": "uint256", "name": "protocolFeePaid", "type": "uint256"},
+          {"internalType": "uint256", "name": "liquidationFee", "type": "uint256"},
           {"internalType": "uint256", "name": "cva", "type": "uint256"},
-          {
-            "internalType": "uint256",
-            "name": "currentBalanceUnits",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "initialNotionalUsd",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "currentBalanceUnits", "type": "uint256"},
+          {"internalType": "uint256", "name": "initialNotionalUsd", "type": "uint256"},
           {"internalType": "address", "name": "affiliate", "type": "address"}
         ],
         "internalType": "struct Position[]",
@@ -1917,72 +1201,24 @@
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "creationTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "mutableTimestamp",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "creationTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "mutableTimestamp", "type": "uint256"},
           {"internalType": "uint256", "name": "rfqId", "type": "uint256"},
-          {
-            "internalType": "enum RequestForQuoteState",
-            "name": "state",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum PositionType",
-            "name": "positionType",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum OrderType",
-            "name": "orderType",
-            "type": "uint8"
-          },
+          {"internalType": "enum RequestForQuoteState", "name": "state", "type": "uint8"},
+          {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
+          {"internalType": "enum OrderType", "name": "orderType", "type": "uint8"},
           {"internalType": "address", "name": "partyA", "type": "address"},
           {"internalType": "address", "name": "partyB", "type": "address"},
-          {
-            "internalType": "enum HedgerMode",
-            "name": "hedgerMode",
-            "type": "uint8"
-          },
+          {"internalType": "enum HedgerMode", "name": "hedgerMode", "type": "uint8"},
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "enum Side", "name": "side", "type": "uint8"},
-          {
-            "internalType": "uint256",
-            "name": "notionalUsd",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginA",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "liquidationFee",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "notionalUsd", "type": "uint256"},
+          {"internalType": "uint256", "name": "lockedMarginA", "type": "uint256"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "liquidationFee", "type": "uint256"},
           {"internalType": "uint256", "name": "cva", "type": "uint256"},
-          {
-            "internalType": "uint256",
-            "name": "minExpectedUnits",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxExpectedUnits",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "minExpectedUnits", "type": "uint256"},
+          {"internalType": "uint256", "name": "maxExpectedUnits", "type": "uint256"},
           {"internalType": "address", "name": "affiliate", "type": "address"}
         ],
         "internalType": "struct RequestForQuote",
@@ -1999,72 +1235,24 @@
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "creationTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "mutableTimestamp",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "creationTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "mutableTimestamp", "type": "uint256"},
           {"internalType": "uint256", "name": "rfqId", "type": "uint256"},
-          {
-            "internalType": "enum RequestForQuoteState",
-            "name": "state",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum PositionType",
-            "name": "positionType",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum OrderType",
-            "name": "orderType",
-            "type": "uint8"
-          },
+          {"internalType": "enum RequestForQuoteState", "name": "state", "type": "uint8"},
+          {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
+          {"internalType": "enum OrderType", "name": "orderType", "type": "uint8"},
           {"internalType": "address", "name": "partyA", "type": "address"},
           {"internalType": "address", "name": "partyB", "type": "address"},
-          {
-            "internalType": "enum HedgerMode",
-            "name": "hedgerMode",
-            "type": "uint8"
-          },
+          {"internalType": "enum HedgerMode", "name": "hedgerMode", "type": "uint8"},
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "enum Side", "name": "side", "type": "uint8"},
-          {
-            "internalType": "uint256",
-            "name": "notionalUsd",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginA",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "liquidationFee",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "notionalUsd", "type": "uint256"},
+          {"internalType": "uint256", "name": "lockedMarginA", "type": "uint256"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "liquidationFee", "type": "uint256"},
           {"internalType": "uint256", "name": "cva", "type": "uint256"},
-          {
-            "internalType": "uint256",
-            "name": "minExpectedUnits",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxExpectedUnits",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "minExpectedUnits", "type": "uint256"},
+          {"internalType": "uint256", "name": "maxExpectedUnits", "type": "uint256"},
           {"internalType": "address", "name": "affiliate", "type": "address"}
         ],
         "internalType": "struct RequestForQuote[]",
@@ -2088,24 +1276,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"}
     ],
     "name": "CancelClosePosition",
     "type": "event"
@@ -2113,36 +1286,11 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountUnits",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "avgPriceUsd",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amountUnits", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "avgPriceUsd", "type": "uint256"}
     ],
     "name": "ClosePosition",
     "type": "event"
@@ -2150,24 +1298,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"}
     ],
     "name": "RequestClosePosition",
     "type": "event"
@@ -2187,13 +1320,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "positionIds",
-        "type": "uint256[]"
-      }
-    ],
+    "inputs": [{"internalType": "uint256[]", "name": "positionIds", "type": "uint256[]"}],
     "name": "requestCloseMarketAll",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -2221,11 +1348,7 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "positionIds",
-        "type": "uint256[]"
-      },
+      {"internalType": "uint256[]", "name": "positionIds", "type": "uint256[]"},
       {"internalType": "uint256[]", "name": "pricesUsd", "type": "uint256[]"}
     ],
     "name": "emergencyClosePositions",
@@ -2236,42 +1359,12 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "rfqId",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "positionId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountUnits",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "avgPriceUsd",
-        "type": "uint256"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "rfqId", "type": "uint256"},
+      {"indexed": true, "internalType": "uint256", "name": "positionId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "amountUnits", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "avgPriceUsd", "type": "uint256"}
     ],
     "name": "OpenPosition",
     "type": "event"
@@ -2279,24 +1372,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "rfqId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "rfqId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"}
     ],
     "name": "RequestForQuoteCanceled",
     "type": "event"
@@ -2304,24 +1382,9 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "rfqId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyA",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "partyB",
-        "type": "address"
-      }
+      {"indexed": true, "internalType": "uint256", "name": "rfqId", "type": "uint256"},
+      {"indexed": false, "internalType": "address", "name": "partyA", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "partyB", "type": "address"}
     ],
     "name": "RequestForQuoteNew",
     "type": "event"
@@ -2344,95 +1407,35 @@
     "inputs": [
       {"internalType": "address", "name": "partyB", "type": "address"},
       {"internalType": "uint256", "name": "marketId", "type": "uint256"},
-      {
-        "internalType": "enum PositionType",
-        "name": "positionType",
-        "type": "uint8"
-      },
+      {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
       {"internalType": "enum Side", "name": "side", "type": "uint8"},
-      {
-        "internalType": "uint256",
-        "name": "usdAmountToSpend",
-        "type": "uint256"
-      },
+      {"internalType": "uint256", "name": "usdAmountToSpend", "type": "uint256"},
       {"internalType": "uint16", "name": "leverage", "type": "uint16"},
-      {
-        "internalType": "uint256[2]",
-        "name": "expectedUnits",
-        "type": "uint256[2]"
-      },
+      {"internalType": "uint256[2]", "name": "expectedUnits", "type": "uint256[2]"},
       {"internalType": "address", "name": "affiliate", "type": "address"}
     ],
     "name": "requestOpenMarketSingle",
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "creationTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "mutableTimestamp",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "creationTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "mutableTimestamp", "type": "uint256"},
           {"internalType": "uint256", "name": "rfqId", "type": "uint256"},
-          {
-            "internalType": "enum RequestForQuoteState",
-            "name": "state",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum PositionType",
-            "name": "positionType",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum OrderType",
-            "name": "orderType",
-            "type": "uint8"
-          },
+          {"internalType": "enum RequestForQuoteState", "name": "state", "type": "uint8"},
+          {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
+          {"internalType": "enum OrderType", "name": "orderType", "type": "uint8"},
           {"internalType": "address", "name": "partyA", "type": "address"},
           {"internalType": "address", "name": "partyB", "type": "address"},
-          {
-            "internalType": "enum HedgerMode",
-            "name": "hedgerMode",
-            "type": "uint8"
-          },
+          {"internalType": "enum HedgerMode", "name": "hedgerMode", "type": "uint8"},
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "enum Side", "name": "side", "type": "uint8"},
-          {
-            "internalType": "uint256",
-            "name": "notionalUsd",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginA",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFee",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "liquidationFee",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "notionalUsd", "type": "uint256"},
+          {"internalType": "uint256", "name": "lockedMarginA", "type": "uint256"},
+          {"internalType": "uint256", "name": "protocolFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "liquidationFee", "type": "uint256"},
           {"internalType": "uint256", "name": "cva", "type": "uint256"},
-          {
-            "internalType": "uint256",
-            "name": "minExpectedUnits",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxExpectedUnits",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "minExpectedUnits", "type": "uint256"},
+          {"internalType": "uint256", "name": "maxExpectedUnits", "type": "uint256"},
           {"internalType": "address", "name": "affiliate", "type": "address"}
         ],
         "internalType": "struct RequestForQuote",
@@ -2446,79 +1449,32 @@
   {
     "inputs": [
       {"internalType": "uint256", "name": "rfqId", "type": "uint256"},
-      {
-        "internalType": "uint256",
-        "name": "filledAmountUnits",
-        "type": "uint256"
-      },
+      {"internalType": "uint256", "name": "filledAmountUnits", "type": "uint256"},
       {"internalType": "uint256", "name": "avgPriceUsd", "type": "uint256"},
-      {"internalType": "bytes16", "name": "uuid", "type": "bytes16"}
+      {"internalType": "bytes16", "name": "uuid", "type": "bytes16"},
+      {"internalType": "uint256", "name": "lockedMarginB", "type": "uint256"}
     ],
     "name": "openPosition",
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "creationTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "mutableTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "positionId",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "creationTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "mutableTimestamp", "type": "uint256"},
+          {"internalType": "uint256", "name": "positionId", "type": "uint256"},
           {"internalType": "bytes16", "name": "uuid", "type": "bytes16"},
-          {
-            "internalType": "enum PositionState",
-            "name": "state",
-            "type": "uint8"
-          },
-          {
-            "internalType": "enum PositionType",
-            "name": "positionType",
-            "type": "uint8"
-          },
+          {"internalType": "enum PositionState", "name": "state", "type": "uint8"},
+          {"internalType": "enum PositionType", "name": "positionType", "type": "uint8"},
           {"internalType": "uint256", "name": "marketId", "type": "uint256"},
           {"internalType": "address", "name": "partyA", "type": "address"},
           {"internalType": "address", "name": "partyB", "type": "address"},
           {"internalType": "enum Side", "name": "side", "type": "uint8"},
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginA",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lockedMarginB",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "protocolFeePaid",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "liquidationFee",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "lockedMarginA", "type": "uint256"},
+          {"internalType": "uint256", "name": "lockedMarginB", "type": "uint256"},
+          {"internalType": "uint256", "name": "protocolFeePaid", "type": "uint256"},
+          {"internalType": "uint256", "name": "liquidationFee", "type": "uint256"},
           {"internalType": "uint256", "name": "cva", "type": "uint256"},
-          {
-            "internalType": "uint256",
-            "name": "currentBalanceUnits",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "initialNotionalUsd",
-            "type": "uint256"
-          },
+          {"internalType": "uint256", "name": "currentBalanceUnits", "type": "uint256"},
+          {"internalType": "uint256", "name": "initialNotionalUsd", "type": "uint256"},
           {"internalType": "address", "name": "affiliate", "type": "address"}
         ],
         "internalType": "struct Position",
@@ -2568,10 +1524,18 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "getSignatureExpiryPeriod",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {"internalType": "uint256", "name": "positionId", "type": "uint256"},
       {"internalType": "uint256", "name": "bidPrice", "type": "uint256"},
       {"internalType": "uint256", "name": "askPrice", "type": "uint256"},
+      {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
       {"internalType": "bytes", "name": "reqId", "type": "bytes"},
       {
         "components": [
@@ -2592,13 +1556,10 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "positionIds",
-        "type": "uint256[]"
-      },
+      {"internalType": "uint256[]", "name": "positionIds", "type": "uint256[]"},
       {"internalType": "uint256[]", "name": "bidPrices", "type": "uint256[]"},
       {"internalType": "uint256[]", "name": "askPrices", "type": "uint256[]"},
+      {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
       {"internalType": "bytes", "name": "reqId", "type": "bytes"},
       {
         "components": [
@@ -2660,18 +1621,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "oldCID",
-        "type": "bytes"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "newCID",
-        "type": "bytes"
-      }
+      {"indexed": false, "internalType": "bytes", "name": "oldCID", "type": "bytes"},
+      {"indexed": false, "internalType": "bytes", "name": "newCID", "type": "bytes"}
     ],
     "name": "SetMuonAppCID",
     "type": "event"
@@ -2679,18 +1630,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newId",
-        "type": "uint256"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldId", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newId", "type": "uint256"}
     ],
     "name": "SetMuonAppId",
     "type": "event"
@@ -2698,18 +1639,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "oldSigner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "newSigner",
-        "type": "address"
-      }
+      {"indexed": false, "internalType": "address", "name": "oldSigner", "type": "address"},
+      {"indexed": false, "internalType": "address", "name": "newSigner", "type": "address"}
     ],
     "name": "SetMuonGatewaySigner",
     "type": "event"
@@ -2717,32 +1648,21 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "oldX",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint8",
-        "name": "oldParity",
-        "type": "uint8"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newX",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint8",
-        "name": "newParity",
-        "type": "uint8"
-      }
+      {"indexed": false, "internalType": "uint256", "name": "oldX", "type": "uint256"},
+      {"indexed": false, "internalType": "uint8", "name": "oldParity", "type": "uint8"},
+      {"indexed": false, "internalType": "uint256", "name": "newX", "type": "uint256"},
+      {"indexed": false, "internalType": "uint8", "name": "newParity", "type": "uint8"}
     ],
     "name": "SetMuonPublicKey",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {"indexed": false, "internalType": "uint256", "name": "oldPeriod", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "newPeriod", "type": "uint256"}
+    ],
+    "name": "SetSignatureExpiryPeriod",
     "type": "event"
   },
   {
@@ -2760,13 +1680,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "muonGatewaySigner",
-        "type": "address"
-      }
-    ],
+    "inputs": [{"internalType": "address", "name": "muonGatewaySigner", "type": "address"}],
     "name": "setMuonGatewaySigner",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -2783,43 +1697,24 @@
     "type": "function"
   },
   {
+    "inputs": [{"internalType": "uint256", "name": "signatureExpiryPeriod", "type": "uint256"}],
+    "name": "setSignatureExpiryPeriod",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{"indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256"}],
     "name": "Pause",
     "type": "event"
   },
   {
     "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{"indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256"}],
     "name": "Unpause",
     "type": "event"
   },
-  {
-    "inputs": [],
-    "name": "pause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "unpause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
+  {"inputs": [], "name": "pause", "outputs": [], "stateMutability": "nonpayable", "type": "function"},
+  {"inputs": [], "name": "unpause", "outputs": [], "stateMutability": "nonpayable", "type": "function"}
 ]

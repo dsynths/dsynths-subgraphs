@@ -11,7 +11,10 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "codegen": "yarn workspaces run codegen",
-    "prepare:arbitrum": "yarn workspaces run prepare:arbitrum"
+    "prepare:fusd": "yarn workspaces run prepare:fusd",
+    "prepare:dei": "yarn workspaces run prepare:dei",
+    "deploy:fusd": "yarn workspaces run deploy:fusd",
+    "deploy:dei": "yarn workspaces run deploy:dei"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.33.0",
