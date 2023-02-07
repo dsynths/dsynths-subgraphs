@@ -18,6 +18,11 @@ enum Side {
   SELL
 }
 
+enum PositionType {
+  ISOLATED
+  CROSS
+}
+
 type RequestForQuote @entity {
   id: ID!
   lastSnapshotId: ID!
@@ -33,6 +38,7 @@ type RequestForQuoteSnapshot @entity {
   timestamp: BigInt!
   rfqId: BigInt!
   marketId: BigInt!
+  side: Side!
   oldState: RequestForQuoteState!
   newState: RequestForQuoteState!
   partyA: Bytes!
@@ -43,6 +49,12 @@ type PositionSnapshot @entity {
   timestamp: BigInt!
   positionId: BigInt!
   marketId: BigInt!
+  side: Side!
+  positionType: PositionType!
+  protocolFee: BigDecimal!
+  liquidationFee: BigDecimal!
+  cva: BigDecimal!
+  initialNotionalUsd: BigDecimal!
   partyA: Bytes!
   partyB: Bytes!
   oldState: PositionState!

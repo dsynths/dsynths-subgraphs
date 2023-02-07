@@ -6,7 +6,7 @@ import {
   MasterAgreement__getPositionResultPositionStruct
 } from '../../generated/MasterAgreement/MasterAgreement'
 import {Position, PositionSnapshot} from '../../generated/schema'
-import {convertAmountToDecimal} from '../helpers'
+import {convertAmountToDecimal, getPositionType, getSide} from '../helpers'
 
 function generateSnapshotID(positionId: BigInt, event: ethereum.Event): string {
   return `${positionId.toHexString()}-${event.transaction.hash.toHexString()}-${event.transactionLogIndex.toHexString()}`
@@ -47,6 +47,12 @@ export function createPositionSnapshot(
   position.timestamp = event.block.timestamp
   position.positionId = positionId
   position.marketId = fetchedPosition.marketId
+  position.side = getSide(fetchedPosition.side)
+  position.positionType = getPositionType(fetchedPosition.positionType)
+  position.protocolFee = convertAmountToDecimal(fetchedPosition.protocolFeePaid, SCALE)
+  position.liquidationFee = convertAmountToDecimal(fetchedPosition.liquidationFee, SCALE)
+  position.cva = convertAmountToDecimal(fetchedPosition.cva, SCALE)
+  position.initialNotionalUsd = convertAmountToDecimal(fetchedPosition.initialNotionalUsd, SCALE)
   position.partyA = fetchedPosition.partyA
   position.partyB = fetchedPosition.partyB
   position.oldState = 'OPEN'

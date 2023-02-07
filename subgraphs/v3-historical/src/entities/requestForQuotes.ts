@@ -5,6 +5,7 @@ import {
 } from '../../generated/MasterAgreement/MasterAgreement'
 import {RequestForQuote, RequestForQuoteSnapshot} from '../../generated/schema'
 import {MASTER_AGREEMENT_ADDRESS} from '../../constants'
+import {getSide} from '../helpers'
 
 function generateSnapshotID(rfqId: BigInt, event: ethereum.Event): string {
   return `${rfqId.toHexString()}-${event.transaction.hash.toHexString()}-${event.transactionLogIndex.toHexString()}`
@@ -41,6 +42,7 @@ export function createRequestForQuoteSnapshot(rfqId: BigInt, event: ethereum.Eve
   rfq.timestamp = event.block.timestamp
   rfq.rfqId = rfqId
   rfq.marketId = fetchedRequestForQuote.marketId
+  rfq.side = getSide(fetchedRequestForQuote.side)
   rfq.oldState = 'NEW'
   rfq.newState = 'NEW'
   rfq.partyA = fetchedRequestForQuote.partyA
