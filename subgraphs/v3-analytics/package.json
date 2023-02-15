@@ -1,0 +1,15 @@
+{
+  "name": "v3-analytics",
+  "private": true,
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "dsynths",
+  "scripts": {
+    "codegen": "graph codegen --output-dir ./generated/",
+    "build": "graph build",
+    "deploy:fusd": "yarn prepare:fusd && graph deploy dsynths/v3-fusd-analytics --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
+    "deploy:dei": "yarn prepare:dei && graph deploy dsynths/v3-dei-analytics --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
+    "prepare:fusd": "mustache ./config/fusd.json template.yaml > subgraph.yaml && mustache ./config/fusd.json ./constants/template.ts > ./constants/index.ts",
+    "prepare:dei": "mustache ./config/dei.json template.yaml > subgraph.yaml && mustache ./config/dei.json ./constants/template.ts > ./constants/index.ts"
+  }
+}

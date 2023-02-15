@@ -1,0 +1,80 @@
+type Constants @entity {
+  id: ID!
+  protocolLiquidationSharePercentage: BigDecimal!
+}
+
+type Global @entity {
+  id: ID!
+  # Cumulative
+  cumulativeProtocolFees: BigDecimal!
+  cumulativeProtocolRevenue: BigDecimal!
+  cumulativeLiquidationFees: BigDecimal!
+  cumulativeNotionalVolume: BigDecimal!
+  cumulativeUniqueParties: BigInt!
+  # Current
+  currentLockedMarginIsolated: BigDecimal!
+  currentLockedMarginCross: BigDecimal!
+  currentOpenInterest: BigDecimal!
+}
+
+type GlobalDailySnapshot @entity {
+  id: ID! # timestamp / 86400, floored
+  date: Int!
+  # Daily
+  dailyProtocolFees: BigDecimal!
+  dailyProtocolRevenue: BigDecimal!
+  dailyLiquidationFees: BigDecimal!
+  dailyNotionalVolume: BigDecimal!
+  dailyUniqueParties: BigInt!
+  # Current
+  currentLockedMarginIsolated: BigDecimal!
+  currentLockedMarginCross: BigDecimal!
+  currentOpenInterest: BigDecimal!
+}
+
+type Party @entity {
+  id: ID!
+  address: Bytes!
+  # Cumulative
+  cumulativeProtocolFeesPaid: BigDecimal!
+  cumulativeLiquidationFeesPaid: BigDecimal!
+  cumulativeCVAPaid: BigDecimal!
+  cumulativeNotionalVolume: BigDecimal!
+  # Current
+  currentAccountBalance: BigDecimal!
+  currentMarginBalance: BigDecimal!
+  currentLockedMarginIsolated: BigDecimal!
+  currentLockedMarginCross: BigDecimal!
+  currentLockedCVA: BigDecimal!
+  currentOpenInterest: BigDecimal!
+}
+
+type PartyDailySnapshot @entity {
+  id: ID! # address + timestamp / 86400, floored
+  address: Bytes!
+  date: Int!
+  # Daily
+  dailyNotionalVolume: BigDecimal!
+  dailyProtocolFeesPaid: BigDecimal!
+  dailyLiquidationFeesPaid: BigDecimal!
+  dailyCVAPaid: BigDecimal!
+  # Current
+  currentLockedMarginIsolated: BigDecimal!
+  currentLockedMarginCross: BigDecimal!
+  currentLockedCVA: BigDecimal!
+  currentOpenInterest: BigDecimal!
+}
+
+type PartySnapshot @entity {
+  id: ID!
+  address: Bytes!
+  timestamp: Int!
+  blockNumber: BigInt!
+  # Current
+  currentAccountBalance: BigDecimal!
+  currentMarginBalance: BigDecimal!
+  currentLockedMarginIsolated: BigDecimal!
+  currentLockedMarginCross: BigDecimal!
+  currentLockedCVA: BigDecimal!
+  currentOpenInterest: BigDecimal!
+}

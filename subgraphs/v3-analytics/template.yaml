@@ -1,0 +1,50 @@
+specVersion: 0.0.6
+description: DEUS V3 Analytics
+repository: https://github.com/dsynths/dsynths-subgraphs/tree/main/subgraphs/v3-analytics
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MasterAgreement
+    network: '{{ network }}'
+    source:
+      address: '{{ masterAgreementAddress }}'
+      abi: MasterAgreement
+      startBlock: {{masterAgreementStartBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mapping.ts
+      entities:
+        - Global
+        - GlobalDailySnapshot
+        - Party
+        - PartySnapshot
+        - PartyDailySnapshot
+      abis:
+        - name: MasterAgreement
+          file: ./abis/MasterAgreement.json
+      eventHandlers:
+        - event: OpenPosition(indexed uint256,indexed uint256,address,address,uint256,uint256)
+          handler: handleOpenPosition
+        - event: ClosePosition(indexed uint256,address,address,uint256,uint256)
+          handler: handleClosePosition
+        - event: Liquidate(indexed uint256,address,address,address,uint256,uint256)
+          handler: handleLiquidate
+        - event: Deposit(indexed address,uint256)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+        - event: Allocate(indexed address,uint256)
+          handler: handleAllocate
+        - event: Deallocate(indexed address,uint256)
+          handler: handleDeallocate
+        - event: AddFreeMarginIsolated(indexed address,uint256,indexed uint256)
+          handler: handleAddFreeMarginIsolated
+        - event: AddFreeMarginCross(indexed address,uint256)
+          handler: handleAddFreeMarginCross
+        - event: RemoveFreeMarginCross(indexed address,uint256)
+          handler: handleRemoveFreeMarginCross
+        - event: SetProtocolLiquidationShare(uint256,uint256)
+          handler: handleSetProtocolLiquidationShare

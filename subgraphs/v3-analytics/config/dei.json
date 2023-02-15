@@ -1,0 +1,7 @@
+{
+  "network": "arbitrum-one",
+  "chainId": "42161",
+  "masterAgreementAddress": "0x1570E893853897d806697F252300e32d99218fC2",
+  "masterAgreementStartBlock": "51840839",
+  "freeMarginUpgradeBlock": "57399079"
+}
